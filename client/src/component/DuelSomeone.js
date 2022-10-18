@@ -20,6 +20,7 @@ const DuelSomeone = () => {
   const storagedata = JSON.parse(localStorage.getItem("nftuser"));
   const dispatch = useDispatch();
   const [targetname, settargetname] = useState("");
+  const [gamechoice,setGameChoice]  = useState("")
   const [textvalue, setTextvalue] = useState("");
   const [selectedimage, setselectedimage] = useState([]);
   const [userdata, setUserdata] = useState([]);
@@ -51,7 +52,6 @@ const DuelSomeone = () => {
 
   const getuserdata = async()=> {
     const res = await axios.post("/api/auth/getuserdata");
- 
     setUserdata(res.data);
     userdata.sort((a, b) => a.username.localeCompare(b.username));
     const filtereduser = userdata.filter((items, index) => {
@@ -66,7 +66,6 @@ const DuelSomeone = () => {
         settargetname(items.username);
       }
     });
-
   }
 
   useEffect(()=>{
@@ -155,6 +154,7 @@ const DuelSomeone = () => {
     },2200);
   };
 
+  console.log(gamechoice)
   const sendValue = async (e) => {
     e.preventDefault();
     setLoader(true);
@@ -179,6 +179,7 @@ const DuelSomeone = () => {
       playeronename:storagedata.username,
       playertwoname: targetname,
       playeronelink: linkurl,
+      gamechoice:gamechoice
     });
     
     if(res){
@@ -189,6 +190,35 @@ const DuelSomeone = () => {
       }
     }
   };
+
+  const sendpublic = async(e)=>{
+    e.preventDefault()
+    setLoader(true)
+
+    if (checkedimage.length <= 0) {
+      setErrorMessage("please select cards");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2200);
+      return;
+    } else if (!targetname) {
+      setErrorMessage("please select a name");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2200);
+      return;
+    }
+
+    const res = await axios.post("/api/auth/publicchallenge",{
+      playerone_url: checkedimage,
+      playeronetext: textvalue,
+      playeroneuserid:storagedata._id,
+      playeronename:storagedata.username,
+      playeronelink: linkurl,
+      gamechoice:gamechoice
+    });
+
+  }
   const handleuserclick = async (e) => {
     setfirstname(false);
     console.log(e);
@@ -418,6 +448,24 @@ const DuelSomeone = () => {
                                     />
                                   </div>
                                 </div>
+                                 
+                                <div className="search-bar">
+                                  <div className="input-group md-form form-sm form-2 pl-0">
+                                    <input
+                                      type="text"
+                                      required
+                                      onInvalid={handleurl}
+                                      className="form-control my-0 py-1 red-border"
+                                      placeholder="Game Of Choice"
+                                      aria-label="Search"
+                                      onChange={(e) =>
+                                        setGameChoice(e.target.value)
+                                      }
+                                    />
+
+                                    <div className="input-group-append"></div>
+                                  </div>
+                                </div>
 
                                 <div className="search-bar">
                                   <div className="input-group md-form form-sm form-2 pl-0">
@@ -437,13 +485,24 @@ const DuelSomeone = () => {
                                   </div>
                                 </div>
 
-                                <div className="btn-duel-right challenge">
+<div style = {{display:"flex"}}>
+                                <div style={{width:"48%"}} className="btn-duel-right challenge">
                                   <input
                                     type="submit"
                                     placeholder="send Challenge"
                                     className="hero-btn challenge"
                                   />
                                 </div>
+
+                                <div style={{width:"48%",position:"relative",left:"3%"}} className="btn-duel-right challenge">
+                                  <button
+                                  style={{cursor:"pointer"}}
+                                  className="hero-btn public-btn"
+                                  onClick={sendpublic}
+                                  >Submit To Public
+                                  </button>
+                                </div>
+</div>
                               </form>
                             </div>
                           </div>

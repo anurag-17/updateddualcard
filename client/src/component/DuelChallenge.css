@@ -21,6 +21,12 @@
     text-transform: capitalize;
     color: #fff;
 }
+
+.public-btn::placeholder{
+color: #fff;
+text-align: center;
+}
+
 .tabct-main {
     max-width: 990px;
     margin: auto;

@@ -121,6 +121,7 @@ catchAsyncError(
     let challenge = await Challenge.create({
       recieved:req.body.recieved,
       player_1_id:req.body.playeroneuserid,
+      category:"private",
       player_2_id:req.body.playertwouserid,
       accept,
       decline,
@@ -130,7 +131,8 @@ catchAsyncError(
           images:req.body.playerone_url,
           userId:req.body.playeroneuserid,
           name:req.body.playeronename,
-          link:req.body.playeronelink
+          link:req.body.playeronelink,
+          gamechoice:req.body.gamechoice
         },
       ],
       player_2: [
@@ -139,13 +141,40 @@ catchAsyncError(
           images:req.body.playertwo_url,
           userId:req.body.playertwouserid,
           name:req.body.playertwoname,
-          link:req.body.playertwolink
+          link:req.body.playertwolink,
+          gamechoice:req.body.gamechoice
         },
       ],
     });
     return res.json(challenge)
   }
   )
+
+
+  exports.publicchallenge= catchAsyncError(
+    async (req, res,next) => {
+      const { recieved, accept, decline } = req.body;
+      const challenge = await Challenge.create({
+        recieved:req.body.recieved,
+        player_1_id:req.body.playeroneuserid,
+        category:"public",
+        accept,
+        decline,
+        player_1: [
+          {
+            text: req.body.playeronetext,
+            images:req.body.playerone_url,
+            userId:req.body.playeroneuserid,
+            name:req.body.playeronename,
+            link:req.body.playeronelink,
+            gamechoice:req.body.gamechoice
+          },
+        ],
+      });
+      return res.json(challenge)
+    }
+  )
+
 
 exports.getchallenge =
 catchAsyncError(
@@ -279,6 +308,7 @@ return res.status(200).json(counting)
   }
 )
 
+
 exports.updateimage= catchAsyncError(
   async(req,res,next)=>{
 const delimage = await Image.updateMany({
@@ -290,26 +320,38 @@ return res.status(200).json(delimage)
   }
 )
 
-// exports.addwinimage = catchAsyncError(
-//   async(req,res,next)=>{
-//     const winimage = await User.findByIdAndUpdate(req.body.id,{
-//       wonimages:req.body.arr,
-//       $inc:{
-//         winning:+1
-//       }    
-//     })
-//   }
-// )
-
-
-exports.addloseimage = catchAsyncError(
+exports.winning = catchAsyncError(
   async(req,res,next)=>{
-    const winimage = await User.findByIdAndUpdate(req.body.id,
+    const win = await User.findByIdAndUpdate(req.body.id,{
+      $inc:{
+        winning:1
+      }    
+    })
+    const lose = await User.findByIdAndUpdate(req.body.loseid,{
+      $inc:{
+        losing:1
+      }
+    })
+    return res.status(200).json(win)
+  }
+)
+
+exports.losing = catchAsyncError(
+  async(req,res,next)=>{
+    const lose = await User.findByIdAndUpdate(req.body.id,
       {
-        wonimages:req.body.arr,
+        $inc:{
+          losing:1
+        }
       }, 
       )
-      return res.status(200).json(winimage)
+      const win = await User.findByIdAndUpdate(req.body.winid,{
+        $inc:{
+          winning:1
+        }
+      })
+
+      return res.status(200).json(lose)
   }
 )
 

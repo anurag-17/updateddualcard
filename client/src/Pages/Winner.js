@@ -9,33 +9,44 @@ const Winner = () => {
   const [images, setImages] = useState([]);
   const [aadil, setaadil] = useState([]);
   const [loader, setLoader] = useState(true);
+  const [loseid,setloseid] = useState("")
   const storagedata =JSON.parse(localStorage.getItem("nftuser")) 
 
  const getwinner = async () => {
-  const newres = await axios.post("/api/auth/winnerchallenge",{id:storagedata._id});
  const res = await axios.post("/api/auth/winnerchallenge",{id:id,result:"declare"});
  if(res){
-  setTimeout(()=>{
-    setLoader(false)
-  },800)
+   setTimeout(()=>{
+     setLoader(false)
+    },800)
     images.push(res.data[0]);
-
+    
     if(index==="player_1") {
       setaadil(images[0].player_1[0].images);
-                                   
-  }
-  if(index==="player_2"){
+      setloseid(images[0].player_1_id)
+    }
+    if(index==="player_2"){
       setaadil(images[0].player_2[0].images);
-  }
- const replaceimage = await axios.put("/api/auth/updateimage",{arr:aadil,id:storagedata._id})
-
- const addwinimages = await axios.put("/api/auth/addwinimage",{arr:aadil,id:storagedata._id})
+      setloseid(images[0].player_2_id)
+    }
+    const replaceimage = await axios.put("/api/auth/updateimage",{arr:aadil,id:storagedata._id})
+    const addwinimages = await axios.put("/api/auth/addwinimage",{arr:aadil,id:storagedata._id})
 
  }
   };
+
+
+  const setwinning = async()=>{
+    const newres = await axios.put("/api/auth/winning",{id:storagedata._id,loseid:loseid});
+  }
+
+
   useEffect(() => {
     getwinner();
-  }, [id,index,loader]);
+  },[id,index,loader]);
+
+  useEffect(()=>{
+    setwinning()
+  },[])
   return (
     <>
     {
