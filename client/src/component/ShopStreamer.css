@@ -1,0 +1,141 @@
+.shopse-sec{
+    background-color: #121127;
+    padding: 40px 0px;
+}
+.steameracrd-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 50px;
+    padding: 40px 0px;
+
+}
+.stemcard1 {
+    background-color: #23194E;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.profil-grp {
+    display: flex;
+    grid-gap: 23px;
+}
+.profil-grp {
+    display: flex;
+    grid-gap: 23px;
+    text-align: center;
+    justify-content: center;
+    padding: 30px 0px;
+}
+.profil-grp3 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+}
+.profil-grp3 img {
+    width: 100%;
+    border-radius: 20px;
+}
+.profil-grp img {
+    border-radius: 20px;
+}
+.profil-grp img {
+    border-radius: 20px;
+    max-width: 175px;
+}
+
+.clearfix {
+    display: flex;
+    margin-bottom: 20px;
+}
+.stemprofile .clearfix {
+    display: flex;
+    background-color: transparent;
+    padding: 25px;
+    border-radius: 16px;
+    justify-content: center;
+}
+.tdata {
+    display: flex;
+    justify-content: center;
+    grid-gap: 60px;
+    padding: 25px 0px;
+}
+.transfer {
+    display: flex;
+    align-items: center;
+    grid-gap: 0px 25px;
+}
+.transfer p {
+    font-size: 14px;
+    line-height: 25px;
+    font-style: normal;
+    margin-bottom: 0px;
+}
+
+/* lifecyle card grid first*/
+.nftlifecyle-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 100px;
+    padding: 40px 0px;
+}
+.nft1 {
+    background-color: #282454;
+    padding: 20px;
+    border-radius: 20px;
+}
+.nft-ct p {
+    font-size: 14px;
+    line-height: 24px;
+    font-style: normal;
+}
+.nft-ct h4 {
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 600;
+}
+.nft-ct  ul li {
+    color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+}
+.nft-ct ul{
+    padding: 11 px;
+}
+.nft1:nth-child(2) {
+    margin-top: 124px;
+}   
+
+
+
+/* responsive */
+@media only screen and (max-width:1200px) {
+   
+}
+
+@media only screen and (max-width:992px) {
+    .steameracrd-grid {
+        display: grid;
+        grid-gap: 12px;
+        padding: 40px 15px;
+    } 
+ }
+
+
+@media only screen and (max-width:778px) {
+    .stemprofile .clearfix {
+        padding: 0px;
+    }
+    .steameracrd-grid {
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 20px;
+    }
+    .profil-grp img {
+        max-width: 120px;
+    }
+}
+
+@media only screen and (max-width:667px) {
+   
+}

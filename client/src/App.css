@@ -1,0 +1,26 @@
+*{
+    font-family: 'Audiowide', cursive;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
+.container {
+    max-width: 1240px;
+    margin: auto;
+}
+.btn:hover {
+    color: #fff;
+}
+.body-main {
+    padding-top: 65px !important;
+}
+
+.hero-btn:hover {
+    background: #2a4070;
+    border-color: #2a4070;
+    transition: 0.6s;
+}
+.btncl:hover {
+    background: #2a4070;
+    border-color: #2a4070;
+    transition: 0.6s;
+}

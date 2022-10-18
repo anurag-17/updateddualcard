@@ -1,0 +1,274 @@
+.duelchalenge-sec{
+    background-color: #121127;
+    padding: 100px 0px;
+}
+
+
+
+.duelchalenge-sec .nav-tabs .nav-link {
+    margin-bottom: -1px;
+    background: 0 0;
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    padding: 5px 40px;
+    background-color: #282454;
+    border-radius: 16px;
+    margin: 10px 0px;
+    height: 53px;
+    font-size: 16px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: #fff;
+}
+.tabct-main {
+    max-width: 990px;
+    margin: auto;
+    padding-top: 35px;
+}
+.tab-left {   
+    border-radius: 16px;
+}
+.tab-left .dule-img1 {
+    text-align: center;
+}
+.tab-left .dule-img1:nth-child(4) {
+    /* border: 1px dashed #4A6BBC; */
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.row.tabChallenge-main {
+    padding: 30px 0px;
+}
+
+.dule-img1:nth-child(4) {
+    border-radius: 20px;
+    opacity: 1;
+}
+.dchallenge-rt-1{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+    background-color: #282054;
+    padding: 25px 20px;
+    border-radius: 20px;
+}
+.dchallenge-rt-1 .dule-img1 img {
+    width: 85%;
+}
+.dchallenge-rt-1 .dule-img1 img:hover {
+    transform: scale(.9);
+    transition: ease-in-out 0.5s;
+}
+
+
+.nav-tabs{
+    justify-content: center;
+    display: flex;
+}
+.tab-challange .nav-item{
+    padding:12px;
+}
+
+/* tab right css */
+
+.tab-left .float-end {
+    float: right!important;
+    color: #fff;
+    font-family: 'Poppins';
+}
+ .clearfix {
+    display: flex;
+    background-color: #282254;
+    padding: 2px 20px;
+    border-radius: 16px;
+}
+.challenge-list {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 36px;
+    padding: 70px 0px 70px 0px;
+    
+}
+.won-title h4 {
+    font-size: 14px;
+    line-height: 24px;
+    color: #00C853;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+
+}
+.won-title span {
+    font-size: 56px;
+    line-height: 41px;
+    color: #00C853;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+.lost-title h4 {
+    font-size: 14px;
+    line-height: 24px;
+    color: #D82626;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+
+}
+.lost-title span {
+    font-size: 56px;
+    line-height: 41px;
+    color: #D82626;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tab-right .duel-form .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #282254;
+    background-clip: padding-box;
+    border: 1px solid #282254;
+    appearance: none;
+    border-radius: 20px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* plus button */
+
+
+.button {
+    cursor: pointer;
+    text-align: center;
+    width:150px;
+    height:150px
+  }
+  
+  .icon-plus:before {
+    background-color: #43387f;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 20%;
+    transform: translateX(-50%);
+    transition: all .3s;
+    z-index: -1;
+
+  }
+  .duel-form .form-control::placeholder {
+    color: #fff !important;
+    opacity: 1; 
+    font-size: 14px;
+    line-height: 24px;
+}
+  
+  .icon-plus:after {
+    background-color: #43387f;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    height: 20%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    transition: all .3s;
+    z-index: -1;
+  }
+  
+  .icon-plus:hover {
+    color: #555;
+  }
+  
+  .icon-plus:hover:before {
+    border-radius: 10%;
+    width: 100%;
+  }
+  
+  .icon-plus:hover:after {
+    border-radius: 10%;
+    height: 100%;
+  }
+.nav-tabs{
+    justify-content: center;
+    display: flex;
+}
+.tab-challange .nav-item {
+    padding: 12px;
+}
+.modal-content {
+  position: relative;
+ top:95px;
+}
+
+.popup.error {
+    width:15rem;
+    height:5rem;
+    z-index:99999;
+    bottom:-50px;
+    left:390px;
+    /* margin: 4rem auto; */
+    position:absolute;
+    background-color: #fafafa;
+    box-shadow: 2px 2px 1rem #212121;
+    border-radius: 0.25rem;
+    
+  }
+  .popup.error .message {
+    background-color: #282254;
+    height: 4rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+    overflow: hidden;
+    position: relative;
+    font-size: 0.9rem;
+  }
+  .popup.error .message:before {
+    font-family: FontAwesome;
+    position: absolute;
+    color: #fafafa;
+    font-size: 10rem;
+    opacity: 0.3;
+    top: -2.5rem;
+    right: -0.5rem;
+  }
+  .popup.error .message p {
+    padding: 0.9rem;
+    font-size: 20px;
+    color: #fafafa;
+  }
+  .popup.error .action {
+    height: 3rem;
+    width: 100%;
+    position: relative;
+  }
+  .popup.error .action button {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 1.3rem;
+    height: 35px;
+    border:1px solid white;
+    outline: none;
+    background-color: #282254;
+    width: 4rem;
+    height: 30px;
+    justify-content: center;
+    color: #fafafa;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+  .popup.error .action button:active {
+    background-color: #282254;
+  }

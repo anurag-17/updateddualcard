@@ -1,0 +1,89 @@
+.marketplace-sec{
+    background-color: #121027;
+    padding: 40px 0px;
+}
+
+.serch-grid {
+    display: flex;
+    grid-gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.search1 .form-select {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: transparent;
+    background-image: url(../images/filter-circle.png);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 30px 30px;
+    border-color:#282254;
+    border-radius: 20px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #fff;
+}
+.search1 option {
+    background: #282254;
+    color: #fff;
+    padding: 20px !important;
+    border: none;
+    font-size: 14px;
+    line-height: 30px;
+    text-transform: capitalize;
+}
+.form-select:focus {
+    border-color:#282254;
+    outline: 0;
+    box-shadow: none;
+}
+
+.css-1gpjby2{
+    background-image: url(../images/filter-circle.png) !important;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position: center;
+    width: 50px;
+    height: 38px !important;
+}
+.css-1gpjby2 svg{
+    display: none;
+}
+.css-1jllj6i-control {
+    display: none !important;
+}
+.css-1r4vtzz { 
+    background: transparent !important;
+      
+}
+.css-1pcexqc-container.filter-market {
+    background-color: #282254 !important;
+    color: #fff;
+    border-radius:0px !important;
+}
+.css-1jllj6i-control {
+    align-items: center;
+    background-color: #282254;
+    border-color: #282254;
+}
+.css-48ayfv {
+    padding: 8px 8px 5px 8px !important;
+    border-radius: 20px !important;
+    color: #fff !important;
+    background-color: transparent !important;
+}
+span.css-1v99tuv {
+    display: none !important;
+}
+.css-1jllj6i-control {
+    background-color: #282254 !important;
+    border-color: #282254 !important;
+}
