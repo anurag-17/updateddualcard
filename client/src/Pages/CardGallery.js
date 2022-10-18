@@ -8,16 +8,21 @@ import img4 from "../images/4.jpg"
 import img5 from "../images/5.jpg"
 import img6 from "../images/6.jpg"
 import axios from 'axios';
+import { Loader } from '../component/Loader';
 
 export const CardGallery = () => {
   const [image,setImage] = useState([])
+  const [loader,setloader] = useState(true)
 
     const userdata = JSON.parse(localStorage.getItem("nftuser"))
     // console.log(userdata.wonimages)
 
+
+   
   const getuserdata = async()=>{
     const res = await axios.post("/api/auth/getuserdata")
     if(res){
+      setloader(false)
     const filtereddata =  res.data.filter((items,index)=>{
           return items._id === userdata._id
       })
@@ -36,7 +41,11 @@ export const CardGallery = () => {
       })
   
   return (
-    <div className=''>
+  <>
+
+  {
+    loader?<Loader/>:
+    <div style = {{height:"100vh"}} className=''>
     <div className='buyduelcard'>
       <div className='container'>
         <div style={{marginTop:"20px"}} className='section-title'>
@@ -201,5 +210,7 @@ export const CardGallery = () => {
       </div>
     </div>
   </div>
+  }
+  </>
   )
 }
