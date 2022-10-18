@@ -31,14 +31,14 @@
 #squareID.two {
   z-index: 9;
   background-color: transparent;
-  transform: rotate(0deg);
+  transform: rotate(-8deg);
 }
 
 /*3*/
 #squareID.three {
   z-index: 8;
   background-color: transparent;
-  transform: rotate(0deg);
+  transform: rotate(-17deg);
 }
 
 #wrapper:hover {
@@ -60,7 +60,7 @@
 }
 
 /*second card*/
-#wrapper:div:nth-child(2) {
+#wrapper:hover > div:nth-child(2) {
   transform: rotate(-14deg);
   transform-origin: left 500px;
 }
@@ -76,7 +76,7 @@
 } */
 
 
-#wrapper{
+#wrapper:hover > div:nth-child(3) {
     transform: rotate(-25deg);
     transform-origin: left 500px;
   }

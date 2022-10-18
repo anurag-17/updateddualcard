@@ -51,7 +51,7 @@ const navigate = useNavigate()
 
     const handleShow = () => setShow(true);
 
-  const getrecieved = async () => {
+  const getrecieved = async()=>{
     const res = await axios.post("/api/auth/recievedchallenge",{id:id,Accept:"pending",result:"pending"});
     res.data.map((items,index)=>{
       setChallengerId(items._id)
