@@ -102,12 +102,17 @@ const logoutuser = () => {
                         </Link>
                         <ul style={{backgroundColor:"#3C2485",textAlign:"center"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                         <li>
-                        <button style={{padding:"5px 8px",marginBottom:"10px",backgroundColor:"#273e77",border:"1px solid #ffff"}}  className="btn btn-outline head-btn" type="submit">{data.username}</button>
+                        <button style={{padding:"5px 8px",marginBottom:"10px",backgroundColor:"#273e77",border:"2px solid #ffff"}}  className="btn btn-outline head-btn" type="submit">{data.username}</button>
                           </li> 
-                          <li>
-                          <button style={{backgroundColor:"#273e77",border:"1px solid #ffff",padding:"5px 8px"}} className="btn btn-outline head-btn"   onClick={logoutuser}>logout</button>
-                          </li>                             
+                        <li>
+                          <button style={{backgroundColor:"#273e77",border:"2px solid #ffff",padding:"3px 8px",position:"absolute",right:"2px"}} className="btn btn-outline head-btn"   onClick={logoutuser}>logout</button>
+                          </li>  
+                        <Link to = "/cardgallery">
+                          <button style={{padding:"3px 6px",marginBottom:"10px",backgroundColor:"#273e77",border:"2px solid #ffff",position:"relative",right:"25%"}}  className="btn btn-outline head-btn" type="submit">Gallery</button>
+                        </Link>   
+          
                         </ul>
+                        
                     </li> 
                     <>
                     </>

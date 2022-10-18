@@ -5,6 +5,9 @@ const challengeSchema = new mongoose.Schema({
     type: String,
     // required: true,
   },
+  category:{
+    type:String,
+  },
   result:{
 type:String,
 default:"pending"
@@ -45,6 +48,7 @@ type:String
     type:String
   },
 
+
   player_1:[
     {
       text: {
@@ -66,6 +70,9 @@ type:String
         default:"pending"
       },
       name:{
+        type:String
+      },
+      gamechoice:{
         type:String
       }
     },
@@ -90,6 +97,9 @@ type:String
         default:"pending"
       },
       name:{
+        type:String
+      },
+      gamechoice:{
         type:String
       }
     },

@@ -31,6 +31,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardGallery } from './Pages/CardGallery';
 import { Admin } from './Admin/Admin';
+import { PublicChallenge } from './Pages/PublicChallenge';
 
 function App(){
 const allid = []
@@ -94,6 +95,7 @@ const [challengedata,setChallengeData] = useState([])
         <Route path = "/decinfo" element = {<Decisioninfo/>}/>
         <Route path = "/cardgallery" element = {<CardGallery/>}/>
         <Route path = "/admin" element = {<Admin/>}/>
+        <Route path = "/challengemarketplace" element={<PublicChallenge/>}/>
         {/* <Route path = "/duelmarket" element = {<ChallengeMarket/>}/> */}
       </Routes>
     <Footer/>

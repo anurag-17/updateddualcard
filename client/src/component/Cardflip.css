@@ -60,7 +60,7 @@
 }
 
 /*second card*/
-#wrapper:hover > div:nth-child(2) {
+#wrapper:div:nth-child(2) {
   transform: rotate(-14deg);
   transform-origin: left 500px;
 }
@@ -70,10 +70,16 @@
 
 /*third card*/
 
-#wrapper:hover > div:nth-child(3) {
+/* #wrapper:hover > div:nth-child(3) {
   transform: rotate(-25deg);
   transform-origin: left 500px;
-}
+} */
+
+
+#wrapper{
+    transform: rotate(-25deg);
+    transform-origin: left 500px;
+  }
 .squareID .shape1 img {
     width: 100%;
     border-radius: 10px;

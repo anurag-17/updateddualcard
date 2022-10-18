@@ -25,4 +25,9 @@ export const API_SUCCESS  = "API_SUCCESS"
 export const API_REQUEST  = "API_REQUEST"
 export const API_FAIL  = "API_FAIL"
 
+
+export const USER_SUCCESS  = "API_SUCCESS"
+export const USER_REQUEST  = "API_REQUEST"
+export const USER_FAIL  =   "API_FAIL"
+
 export const CLEAR_ERRORS = "CLEAR_ERRORS"

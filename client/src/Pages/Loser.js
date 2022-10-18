@@ -40,9 +40,19 @@ export const Loser = () => {
 }
 
   };
+
+
+  const setlosing = async()=>{
+    const newres = await axios.put("/api/auth/losing",{id:storagedata._id,winid:loseid});
+  }
+
   useEffect(() => {
     getwinner();
   },[id,index,loader]);
+
+  useEffect(()=>{
+    setlosing()
+  },[])
     return (
 <>
 {

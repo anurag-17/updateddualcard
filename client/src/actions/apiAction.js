@@ -1,5 +1,5 @@
 import axios from "axios"
-import { API_REQUEST,API_SUCCESS,API_FAIL } from "../constants/userConstants"
+import { API_REQUEST,API_SUCCESS,API_FAIL, USER_REQUEST, USER_SUCCESS, USER_FAIL } from "../constants/userConstants"
 
 export const postimage=(userdata)=> async (dispatch, getState) => {
     try {
@@ -15,6 +15,16 @@ export const postimage=(userdata)=> async (dispatch, getState) => {
     
   };
 
+  export const getuserdata = ()=>async(dispatch,getState)=>{
+    try{
+      dispatch({type:USER_REQUEST})
+      const {data} = await axios.post("/api/auth/getuserdata")
+      dispatch({type:USER_SUCCESS,payload:data})
+    }
+    catch(error){
+      dispatch({type:USER_FAIL,payload:error.response.data})
+    }
+  }
 
 
   

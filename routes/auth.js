@@ -1,16 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const{ register, login,getdata, getuserdata,sendchallange, getchallenge, getrecieved, acceptChallenge, challengeStatus, declineChallenge, getwinner, setwinner, countwinlose,updateimage,setwinlose, setexpire, addwinimage, addchallenge, addloseimage, getallchallenge, notification}= require('../controllers/auth')
+const{ register, login,getdata, getuserdata,sendchallange, getchallenge, getrecieved, acceptChallenge, challengeStatus, declineChallenge, getwinner, setwinner, countwinlose,updateimage,setwinlose, setexpire, addwinimage, addchallenge, addloseimage, getallchallenge, notification, winning, losing, publicchallenge}= require('../controllers/auth')
 router.route("/register").post(register);
-
 router.route("/login").post(login);
-
 router.route("/getdata").post(getdata)
-
 router.route("/getuserdata").post(getuserdata)
-
 router.route("/sendchal").post(sendchallange,notification)
+router.route("/publicchallenge").post(publicchallenge)
 router.route("/challengedata").post(getchallenge)
 router.route("/recievedchallenge").post(getrecieved)
 router.route("/acceptChallenge").put(acceptChallenge)
@@ -23,7 +20,8 @@ router.route("/countwinlose").post(countwinlose)
 router.route("/updateimage").put(updateimage)
 router.route("/setexpire").put(setexpire)
 router.route("/addwinimage").put(addwinimage)
-router.route("/addloseimage").put(addloseimage)
+router.route("/winning").put(winning)
+router.route("/losing").put(losing)
 router.route("/addchallenge").put(addchallenge)
 router.route("/getallchallenge").get(getallchallenge)
 // router.route("/forgetpassword").post(forgetpassword);

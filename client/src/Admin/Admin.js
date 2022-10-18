@@ -18,6 +18,7 @@ export const Admin = () => {
 
       const res = await axios.get("/api/auth/getallchallenge")
       setAllchallenge(res.data)
+      console.log(res.data[0])
 
     }
 
@@ -31,8 +32,8 @@ export const Admin = () => {
 
 <div style  = {{minHeight:"90vh",display:"flex",justifyContent:"center",alignItems:"center"}}>
 <Card user={usercount} title = "Users" subtitle = "Registered"/>
-<Card  user={allchallenge.length} title  = "Challenges"/>
-<Card/>
+<Card user={allchallenge.length} title="Challenges"/>
+<Card />
 <Card/>
 </div>
 <table className='table table-bordered'>
@@ -41,7 +42,9 @@ export const Admin = () => {
     <tr>
   <th>Users</th>
   <th>Challenges</th>
-  <th>Manual Reviews</th>
+  <th>Status</th>
+
+  {/* <th>Manual Reviews</th> */}
   {/* <th>Challenges Won</th>
   <th>Challenges Lost</th> */}
     </tr>
@@ -55,13 +58,6 @@ export const Admin = () => {
             <tr>
 <td>{items.username}</td>
 <td>{items.challenges.length}</td>
-{/* {
-  allchallenge.filter((item,index)=>{
-    return item.result ==="Manual Review"
-  }).map((items,i)=>{
-    return  <td>{items.length}</td>
-  })
-} */}
 
 
 </tr>   
