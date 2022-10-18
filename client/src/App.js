@@ -93,9 +93,9 @@ const [challengedata,setChallengeData] = useState([])
         <Route path = "/pathtolevel" element = {<Pathtolevel/>}/>
         <Route path = "/duelsystem" element = {<Duelsystem/>}/>
         <Route path = "/decinfo" element = {<Decisioninfo/>}/>
-        <Route path = "/cardgallery" element = {<CardGallery/>}/>
+        <Route path = "/cardgallery" element = {<ProtectedRoute><CardGallery/></ProtectedRoute>}/>
         <Route path = "/admin" element = {<Admin/>}/>
-        <Route path = "/challengemarketplace" element={<PublicChallenge/>}/>
+        <Route path = "/challengemarketplace" element={<ProtectedRoute><PublicChallenge/></ProtectedRoute>}/>
         {/* <Route path = "/duelmarket" element = {<ChallengeMarket/>}/> */}
       </Routes>
     <Footer/>
