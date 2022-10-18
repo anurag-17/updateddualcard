@@ -70,7 +70,7 @@ const DuelSomeone = () => {
 
   useEffect(()=>{
       getuserdata()
-  },[])
+  },[runfun,loader])
 
 
   const handleClose = () => {
