@@ -1,0 +1,244 @@
+.pathlevel-sec{
+    background-color: #121027;
+    padding: 40px 0px;
+}
+.level-img {
+    max-width:100%;
+    margin: auto;
+    /* background-color: #282454; */
+    border-radius: 32px;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.level-img h3 {
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    padding-top: 20px;
+}
+.level-img img {
+    border-radius:27px;
+    width: 37%;
+    justify-content: center;
+    text-align: center;
+}
+.table-main {
+    background-color: #23194E;
+    border-radius: 20px
+}
+/* .tite-shape{
+    background-image: url(../images/most-shape1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} */
+
+/* pathlevel table start */
+
+.total-sec {
+    padding-top: 50px;
+}
+.tablelevel {
+    padding: 20px 0px;
+}
+.tablelevel th {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: left;
+    padding-left: 26px;
+}
+.total-sec td {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+    padding: 15px 20px;
+    width: 20%;
+    text-align: left;
+}
+.table-main tbody, td, th, thead, tr {
+    border-width: 1px !important;
+
+}
+
+.table-main tbody, td, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-color: #3C2485 !important;
+}
+ .table>thead {
+    height: 70px !important;
+}
+.table>thead {
+    vertical-align: middle;
+}
+.seastion-mt {
+    text-align: center;
+}
+.seastion-mt h4 {
+    font-size: 30px;
+    line-height: 44px;
+    font-family: Audiowide, Regular;
+    color: #fff;
+}
+ul.most-lisrt li {
+    font-size: 16px;
+    line-height: 25px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+ul.most-lisrt {
+    list-style: none;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+ul.most-lisrt li {
+    padding-left: 11px;
+}
+
+.shap-bg {
+    text-align: center;
+    padding: 20px 0px;
+}
+.shap-bg img {
+    width: 65%;
+}
+.mostcard-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    text-align: center;
+    font-size: 24px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+}
+.tite-shape h3 {
+    font-size: 24px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+}
+.tite-shape {
+    position: relative;
+}
+.tite-shape img {
+    width: 100%;
+}
+.tite-shape h3 {
+    text-align: center;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-45%, -27%);
+    width: 400px;
+}   
+.level-sec {
+    padding-top: 30px;
+}
+ul.most-lisrt li span {
+    margin-right: 3px;
+    font-size: 19px;
+}
+.table-main tbody {
+    box-shadow: 0 0 0 1px #3c2485;
+    border-radius: 28px;
+}
+/* pathlevel table end */
+
+
+/* responsive */
+@media only screen and (max-width:1200px) {
+    
+  }
+
+  @media (max-width:992px) {
+    .tite-shape h3 {
+        width: 100%;
+    }
+    .tite-shape h3 {
+        font-size: 17px;
+        line-height: 21px;
+        color: #fff;
+    }
+}
+
+
+
+@media (max-width:778px) {
+
+.tite-shape h3 {
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.mostcard-grid {
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+.tite-shape h3 {
+    font-size: 19px;
+}
+.tite-shape h3 {
+    left: 54%;
+}
+.shap-bg {
+    width: 100%;
+}
+.tablelevel th {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 400;
+}
+.total-sec td:nth-child(1) {
+    padding: 10px 10px;
+    width: 140px;
+}
+.tite-shape img {
+    width: 100%;
+    max-width: 90%;
+}
+.level-img img {
+    border-radius: 27px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.seastion-mt h4 {
+    font-size: 25px;
+    line-height: 36px;
+}
+.shap-bg img {
+    width: 90%;
+}
+}
+
+
+@media (max-width:667px) {
+
+    .mostcard-grid {
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 20px;
+    }
+    .total-sec td {
+        font-size: 12px;
+        line-height: 25px;
+    }
+    .total-sec td:nth-child(1) {
+        width: 91px;
+    }
+    .level-sec {
+        padding: 10px;
+    }
+    }
+    

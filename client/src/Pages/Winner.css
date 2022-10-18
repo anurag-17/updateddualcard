@@ -1,0 +1,95 @@
+.winner-sec{
+    background-color: #121027;
+    padding: 40px 0px;
+}
+.won-main {   
+    padding: 40px 0px;
+    position: relative;
+}
+.won-main:after {
+    position: absolute;
+    display: flex;
+    bottom: 27px;
+    width: 100%;
+    height: 40px;
+    background: #3C2485;
+    content: '';
+    border-radius: 10px;
+    text-align: center;
+}
+.won-grid {
+    /* display: grid; */
+    display: flex;
+    justify-content: center;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+    text-align: center;
+    align-items: center;
+    max-width:990px;
+    margin: auto;
+    z-index: 5;
+}
+.wonimg1 img {
+    
+    width: 100%;
+    max-height: 280px;
+    height: auto;
+    position: relative;
+    top: 0px;
+    border: 3px solid #6639E4;
+    border-radius: 20px;
+    opacity: 1;
+    max-width: 85%;
+
+}
+.prize-image{
+    margin-left:60px;
+    max-width:78%
+}
+
+.wonimg1 img:hover{
+    transform: scale(.9);
+    transition: ease-in-out 0.5s;
+}
+.won-btn {
+    max-width: 778px;
+    margin: auto;
+}
+.won-btn {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 0px;
+}
+
+.win-btn{
+    width: 61%;
+    margin-bottom: 10px;
+}
+
+/* responsive */
+
+@media only screen and (max-width:778px) {
+    .winnerbtn1 .hero-btn {
+        font-size: 14px;
+        background-color: #4B6EBC;
+        padding: 6px 15px;
+        border-radius: 25px;
+        border: 1px solid #4B6EBC;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 24px;
+    }
+   
+  }
+
+
+  @media only screen and (max-width:558px) {
+    .won-btn {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 0px;
+    }
+    .won-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}

@@ -1,0 +1,121 @@
+.duelacept-sec {
+    min-height:70vh;
+    height: auto;
+    background-color: #121127;
+    padding: 75px 0px;
+}
+.duelat-main {
+    padding: 40px 0px;
+    align-items: center;
+    max-width: 778px;
+    margin: auto;
+}
+.dA-profile .clearfix {
+    display: flex;
+    background-color: #282454;
+    border-radius: 16px;
+    opacity: 1;
+    padding: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.dA-profile .clearfix::after{
+    display: none;
+}
+
+.dA-profile{
+    margin-bottom: 20px;
+}
+.duelA-center {
+    text-align: center;
+}
+.dA-slider {
+    padding-top: 3px;
+    padding-bottom: 2px;
+}
+.dA-slider img {
+    border-radius: 20px;
+    opacity: 1;
+}
+.carousel-control-prev-icon {
+    background-image: url(../images/Chevron-icon.png);
+}
+.carousel-control-next-icon {
+    background-image: url(../images/Chevron-lefticon.png);
+}
+.dA-left {
+    position: relative;
+}
+.select-btn {
+    text-align: center;
+    position: absolute;
+    bottom: 34px;
+    left: 32%;
+}
+.dA-slider .carousel-indicators {
+    display: none;
+}
+.dA-left .select-btn .hero-btn {
+    font-size: 14px;
+    background-color: #151232;
+    padding: 6px 29px 6px 50px;
+    border-radius: 25px;
+    border: 1px solid #151232;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 30px;
+    position: relative;
+}
+.dA-left .select-btn .hero-btn span {
+    background: #4f6bbc;
+    padding: 9px 16px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 500;
+}
+
+.winner-btn{
+    padding-top: 0px;
+    position: relative;
+    text-align: center;
+}
+
+.winner-btn button{
+    padding: 12px 0;
+}
+#winner-btn{
+width: 70%;
+}
+.table-hero-btn{
+    background: #4f6bbc;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 24px;
+    top: 0;
+    left: 0;
+    font-weight: 400;
+}
+
+/* responsive */
+@media only screen and (max-width:1200px) {
+    
+  }
+
+
+  @media only screen and (max-width:992px) {
+   
+  }
+
+  @media only screen and (max-width:772px) {
+    .duelA-center {
+        padding: 20px 0px;
+    }
+}

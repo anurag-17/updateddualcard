@@ -1,0 +1,251 @@
+/* road map start */
+.roadmap-sec {
+    background-color: #131128;
+    padding-top: 75px;
+    padding-bottom: 36px;
+}
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+    text-align: center;
+    padding: 30px 0px;
+}
+.road-item1{
+    background-image: url(../images/purple-circle.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 387px;
+    width: 100%;
+    background-size: contain;
+    position: relative;
+}
+
+.yeartext h3 {
+    font-size: 40px;
+    line-height: 36px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+}
+.yeartext span {
+    display: block;
+    font-family: 'Audiowide', cursive;
+    font-size: 30px;
+}
+.road-item1 {
+    display: flex;
+    flex-direction: column;
+}
+.road-item1:nth-child(even) {
+    flex-direction: column-reverse;
+    background-image: url(../images/Blue-Green-circle.svg);
+    
+}
+.road-item1:nth-child(even) .map-des {
+    padding: 30px 0px;
+}
+.yeartext {
+    padding: 75px 0px;
+}
+.map-des {
+    padding: 50px 0px;
+  margin: auto;
+}
+.map-des li{
+    padding: 3px 26px;
+    /* list-style:disc; */
+    font-size: 12px;
+    line-height: 17px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    justify-content: center;
+}
+.map-des li span{
+   margin-right: 5px;
+}
+
+.margin{
+margin-top:-12px;
+margin-left: 4px;
+margin-right: 4px;
+}
+
+.map-des p{
+    font-size: 11px;
+}
+.first-tops p {
+    margin-bottom: 0;
+    padding: 24px;
+}
+.second-tops {
+    padding: 2px !important;
+    margin-bottom: 39px;
+}
+.second-tops p {
+    margin-bottom: -11px;
+    padding: 41px;
+}
+.third-sec p {
+    margin-top: 5px;
+}
+
+.fifth-sec p {
+    margin-top: 26px;
+}   
+.first-tops .yeartext h3 {
+    margin-bottom: 0;
+    margin-top: 7px;
+}
+.second-tops h3 {
+    margin-bottom: -2px;
+    padding-top: 9px;
+}
+.third-sec h3 {
+    margin-bottom: 7px;
+    padding-top: 7px;
+}
+.fourth-sec h3 {
+    padding-top: 13px;
+    margin-bottom: 0;
+}
+.fifth-sec h3 {
+    margin-bottom: 0;
+    padding-top: 7px;
+}
+
+/* road map end */
+
+
+/* responsive */
+
+@media only screen and (max-width:1100px) {
+    .road-item1:nth-child(even) .map-des {
+        padding: 15px 0px;
+    }
+    
+  }
+
+@media only screen and (max-width:1024px) {
+    .map-des {
+        padding: 0px;
+    }
+    .road-item1:nth-child(even) .map-des {
+        padding: 0px 0px;
+    }
+    .road-item1:nth-child(even) .map-des p {
+        padding: 10px 19px;
+    }
+    .map-des p {
+        padding: 0px 26px;
+    }
+    .map-des {
+        padding: 33px 0px;
+    }
+    .second-tops p {
+        margin-bottom: 29px;
+
+    }
+  }
+
+  
+
+@media only screen and (max-width:867px) {  
+
+    
+}
+
+@media only screen and (max-width:778px) {  
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    text-align: center;
+    padding: 30px 0px;
+}
+.map-des p {
+    padding: 67px 26px;
+}
+.road-item1 {
+    background-position: center;
+}
+.map-des p {
+    padding: 64px 70px !important;
+    width: 300px;
+    margin: auto;
+}
+.first-tops p {
+    padding: 0 !important;
+    max-width: 157px !important;
+    margin-top: 41px;
+}
+.third-sec p {
+    padding: 0 !important;
+    width: 157px;
+    margin-top: 25px;
+}
+
+}
+
+@media only screen and (max-width:667px) {
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 15px;
+    text-align: center;
+    padding: 30px 0px;
+}
+.road-item1 {
+    background-position: center;
+    margin-bottom: 16px !important;
+}
+.map-des p {
+    padding: 30px 55px;
+    padding-right: 46px;
+    width: 250px;
+    margin: auto;
+}
+.road-item1:nth-child(even) .map-des p {
+    padding: 60px 55px;
+    padding-right: 48px;
+    width: 250px;
+    margin: auto;
+}
+.roadmap-sec {
+    padding: 0px 0px;
+}
+.first-tops p {
+    margin-top: 40px;
+}
+.second-tops p {
+    padding: 57px !important;
+}
+.third-sec p {
+    width: 148px;
+    margin-top: 31px;
+}
+.fourth-sec p {
+    padding: 48px !important;
+}
+.fifth-sec .map-des p {
+    padding: 51px 70px !important;
+}
+.second-tops {
+    margin-bottom: 0px;
+}
+
+}
+
+
+
+@media only screen and (max-width:568px) {   
+    .roadmap-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 15px;
+        text-align: center;
+        padding: 30px 0px;
+    }
+}
+
