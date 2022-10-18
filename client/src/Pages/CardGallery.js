@@ -45,7 +45,7 @@ export const CardGallery = () => {
 
   {
     loader?<Loader/>:
-    <div style = {{height:"100vh"}} className=''>
+    <div style = {{minHeight:"100vh"}} className=''>
     <div className='buyduelcard'>
       <div className='container'>
         <div style={{marginTop:"20px"}} className='section-title'>
