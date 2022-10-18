@@ -90,9 +90,9 @@ export const CardGallery = () => {
                              <Form.Control placeholder="Name"  />
                              </Form.Group>
                           </div> */}
-                          <div className='btn-duel-right'>
+                          {/* <div className='btn-duel-right'>
                              <button style={{marginBottom:"0px"}} className='hero-btn'>BUY NOW</button>
-                           </div>
+                           </div> */}
                         </div>
                       </div>
                     )
