@@ -194,10 +194,11 @@ catchAsyncError(
 exports.getrecieved = 
 catchAsyncError(
   async(req,res,next)=>{
-    const data = await Challenge.find({player_2_id:req.body.id,Accept:req.body.Accept,result:req.body.result})
+    const data = await Challenge.find({player_2_id:req.body.id,Accept:req.body.Accept,result:req.body.result,category:"private"})
     return res.json(data)
   }
   )
+
 
   exports.getallchallenge = 
   catchAsyncError(

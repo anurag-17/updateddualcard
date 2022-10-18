@@ -122,7 +122,7 @@ const Cardflip = () => {
                         </div>                        
                         <div id="squareID" class="two">
                             <div  className='shape1'>
-                                <img style={{width:"300px",position:"relative",left:"25px"}} className="two" src={buyimg3}></img>
+                                <img style={{width:"300px",position:"relative",left:"25px",top:"7px"}} className="two" src={buyimg3}></img>
                                 <h4>LVL 1 DUELCARD</h4>
                             </div>  
                         </div>                        
