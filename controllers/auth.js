@@ -105,6 +105,14 @@ catchAsyncError(
   }
 )
 
+exports.populating = 
+catchAsyncError(
+  async (req, res,next) => {
+    const data = User.find().populate("posts")
+    return res.status(200).json(data)
+  }
+)
+
 exports.getuserdata = 
 catchAsyncError(
   async(req, res,next) => {
@@ -324,6 +332,12 @@ return res.status(200).json(delimage)
 
 exports.winning = catchAsyncError(
   async(req,res,next)=>{
+
+    console.log(req.body.id)
+    console.log(req.body.losid)
+    console.log(req.body)
+    return
+
     const win = await User.findByIdAndUpdate(req.body.id,{
       $inc:{
         winning:1
@@ -340,13 +354,20 @@ exports.winning = catchAsyncError(
 
 exports.losing = catchAsyncError(
   async(req,res,next)=>{
-    const lose = await User.findByIdAndUpdate(req.body.id,
+    console.log(req.body.id)
+    console.log(req.body.winid)
+    console.log(req.body)
+    let lose;
+    if (req.body.id.match(/^[0-9a-fA-F]{24}$/)) {
+      console.log("here")
+     lose = await User.findByIdAndUpdate(req.body.id,
       {
         $inc:{
           losing:1
         }
       }, 
       )
+    }
       const win = await User.findByIdAndUpdate(req.body.winid,{
         $inc:{
           winning:1
@@ -386,6 +407,8 @@ exports.addnewchallenge  = catchAsyncError(
     const setchallenge = await get
   }
 )
+
+
 
 //forget password
 // exports.forgetpassword = async (req, res, next) => {

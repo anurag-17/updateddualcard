@@ -19,8 +19,7 @@ export const Admin = () => {
 
       const res = await axios.get("/api/auth/getallchallenge")
       setAllchallenge(res.data)
-      console.log(res.data[0])
-
+  
     }
 
     useEffect(()=>{
@@ -45,8 +44,9 @@ export const Admin = () => {
   <th>Users</th>
   <th>Email</th>
   <th>Avatar</th>
-
-  {/* <th>Manual Reviews</th> */}
+  <th>Winning</th>
+  <th>Losing</th>
+  <th>Manual Reviews</th>
   {/* <th>Challenges Won</th>
   <th>Challenges Lost</th> */}
     </tr>
@@ -57,10 +57,15 @@ export const Admin = () => {
 {
     userdata.map((items,index)=>{
         return(
-            <tr>
+<tr>
 <td>{items.username}</td>
 <td>{items.email}</td>
 <td><img style = {{width:"9%"}} src = {items.avatar}/></td>
+<td>{items.winning}</td>
+<td>{items.losing}</td>
+{
+
+}
 
 </tr>   
             )
