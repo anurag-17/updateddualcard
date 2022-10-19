@@ -61,7 +61,7 @@ const DuelSomeone = () => {
       const filtereduser = userdata.filter((items, index) => {
         return items._id !==storagedata._id;
       });
-      setnewuserdata(filtereduser);
+      console.log(filtereduser)
       setsearchfilter(filtereduser);
       filtereduser.map((items, index) => {
         if (index === 0) {
@@ -72,9 +72,9 @@ const DuelSomeone = () => {
       });
     }
   }
-
+  console.log(searchfilter)
   console.log(userdata)
-
+ 
 
   const handleClose = () => {
     setShow(false);
@@ -249,7 +249,7 @@ const DuelSomeone = () => {
     getimages();
     countwinlose();
     getuserdata()
-  },[runfun,image,isImage]);
+  },[runfun,image,isImage,loader]);
 
   return (
     <div>
