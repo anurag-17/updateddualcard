@@ -25,7 +25,7 @@ const DuelSomeone = () => {
   const [selectedimage, setselectedimage] = useState([]);
   const [userdata, setUserdata] = useState([]);
   const [newuserdata, setnewuserdata] = useState([]);
-  const [searchfilter, setsearchfilter] = useState([]);
+  const [searchfilter, setsearchfilter] = useState(userdata);
   const [runfun, setrunfun] = useState(true);
   const [loader, setLoader] = useState(true);
   const [data, setdata] = useState({
@@ -54,22 +54,26 @@ const DuelSomeone = () => {
 
   const getuserdata = async()=> {
     const res = await axios.post("/api/auth/getuserdata");
-    setUserdata(res.data);
-    userdata.sort((a, b) => a.username.localeCompare(b.username));
-    const filtereduser = userdata.filter((items, index) => {
-      return items._id !==storagedata._id;
-    });
-    setnewuserdata(filtereduser);
-    setsearchfilter(filtereduser);
-    filtereduser.map((items, index) => {
-      if (index === 0) {
-        settargetname(items.username);
-        setclickeduser(items._id);
-        settargetname(items.username);
-      }
-    });
+    if(res){
+      setUserdata(res.data);
+      
+      userdata.sort((a, b) => a.username.localeCompare(b.username));
+      const filtereduser = userdata.filter((items, index) => {
+        return items._id !==storagedata._id;
+      });
+      setnewuserdata(filtereduser);
+      setsearchfilter(filtereduser);
+      filtereduser.map((items, index) => {
+        if (index === 0) {
+          settargetname(items.username);
+          setclickeduser(items._id);
+          settargetname(items.username);
+        }
+      });
+    }
   }
 
+  console.log(userdata)
   if(loader===true){
     getuserdata()
   }
