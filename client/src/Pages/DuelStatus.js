@@ -14,6 +14,7 @@ export const DuelStatus = () => {
   }, 2100);
   const getrecieved = async () => {
     const res = await axios.post("/api/auth/challengestatus",{id:data._id});
+  
     setchallengedata(res.data);
   };
 
@@ -28,7 +29,7 @@ export const DuelStatus = () => {
 
   return (
     <>
-      <div className="body-main">
+      <div className="">
         {loading ? (
           <Loader/>
         ):(
