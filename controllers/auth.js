@@ -108,7 +108,7 @@ catchAsyncError(
 exports.getuserdata = 
 catchAsyncError(
   async(req, res,next) => {
-    let userdata = await User.find();
+    let userdata = await User.find({_id:{$ne:req.body.id}});
     return res.status(200).json(userdata);
   }
 )
