@@ -40,7 +40,6 @@ const navigate = useNavigate()
 
   const id=storagedata._id;
   
-
   setTimeout(()=>{
     setLoader(false)
     },2000)
@@ -212,18 +211,14 @@ countwinlose()
                 </div>
               </div>
               <div className="dule-cont">
-               
                 {items.player_1.map((item,index)=>{
 return(
     <React.Fragment key={index}>
                         <h4>TERMS</h4>
-                        <p>{item.text}.</p>  
+                        <p>{item.text}</p>  
                       </React.Fragment>
 )
                 })} 
-                
-  
-                  
               </div>
             </div>
             <div className="col-md-2 duel-center">
