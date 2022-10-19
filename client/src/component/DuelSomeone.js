@@ -241,7 +241,7 @@ const DuelSomeone = () => {
   
   useEffect(()=>{
    getuserdata()
-  },[image,isImage,runfun,loader])
+  })
 
   useEffect(() => {
     getimages();
