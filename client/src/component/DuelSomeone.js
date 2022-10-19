@@ -49,11 +49,7 @@ const DuelSomeone = () => {
   setTimeout(() => {
     setrunfun(false);
     setLoader(false)
-    setInterval(()=>{
-        setinter(true)
-    },2000)
   },1000);
-
 
 
   const getuserdata = async()=> {
@@ -74,10 +70,9 @@ const DuelSomeone = () => {
     });
   }
 
-  useEffect(()=>{
-      getuserdata()
-  },[runfun,loader,inter])
-
+  if(loader===true){
+    getuserdata()
+  }
 
   const handleClose = () => {
     setShow(false);

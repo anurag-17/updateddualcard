@@ -87,7 +87,10 @@ const logoutuser = () => {
                           </li> 
                           <li>
                             <Link to="/Duelsystem" className="dropdown-item">Duel System</Link>
-                          </li>                             
+                          </li>       
+                          <li>
+                            <Link to="/challengemarketplace" className="dropdown-item">Challenge Marketplace</Link>
+                          </li>                                   
                         </ul>
                     </li> 
                                                                    
