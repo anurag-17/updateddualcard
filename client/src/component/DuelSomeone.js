@@ -180,7 +180,7 @@ const DuelSomeone = () => {
     });
     
     if(res){
-      const newres = axios.put("/api/auth/addchallenge",{arr:[storagedata._id,clickeduser],challenges:res.data})
+      const newres = axios.put("/api/auth/addchallenge",{arr:[storagedata._id,clickeduser],challenges:res.data._id})
       if(newres){
         navigate("/thankyou");
         setLoader(false);
@@ -191,7 +191,6 @@ const DuelSomeone = () => {
   const sendpublic = async(e)=>{
     e.preventDefault()
     setLoader(true)
-
     if (checkedimage.length <= 0) {
       setErrorMessage("please select cards");
       setTimeout(() => {

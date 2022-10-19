@@ -25,19 +25,18 @@ import { DuelStatus } from './Pages/DuelStatus';
 import Pathtolevel from './Pages/Pathtolevel';
 import { Loser } from './Pages/Loser';
 import Duelsystem from './component/Duelsystem';
-import { ChallengeMarket } from './component/ChallengeMarket';
 import { Decisioninfo } from './component/Decisioninfo';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardGallery } from './Pages/CardGallery';
 import { Admin } from './Admin/Admin';
 import { PublicChallenge } from './Pages/PublicChallenge';
+import { PublicRecieve } from './Pages/PublicRecieve';
 
 function App(){
 const allid = []
 const [newid, setnewid] = useState([])
 const [challengedata,setChallengeData] = useState([])
-
 
   const getexpire = async()=>{
     const res = await axios.put("/api/auth/setexpire",{date:Date.now()})
@@ -96,6 +95,7 @@ const [challengedata,setChallengeData] = useState([])
         <Route path = "/cardgallery" element = {<ProtectedRoute><CardGallery/></ProtectedRoute>}/>
         <Route path = "/admin" element = {<Admin/>}/>
         <Route path = "/challengemarketplace" element={<ProtectedRoute><PublicChallenge/></ProtectedRoute>}/>
+        <Route path = "/publicrecieve/:id" element={<ProtectedRoute><PublicRecieve/></ProtectedRoute>}/>
         {/* <Route path = "/duelmarket" element = {<ChallengeMarket/>}/> */}
       </Routes>
     <Footer/>

@@ -48,7 +48,6 @@ type:String
     type:String
   },
 
-
   player_1:[
     {
       text: {

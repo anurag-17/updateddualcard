@@ -37,22 +37,22 @@ export const Loser = () => {
   
   const replaceimage = await axios.put("/api/auth/updateimage",{arr:aadil,id:loseid})
   const addwinimages = await axios.put("/api/auth/addwinimage",{arr:aadil,id:loseid})
-}
+  const newres = await axios.put("/api/auth/losing",{id:storagedata._id,winid:loseid});
 
+}
   };
 
 
   const setlosing = async()=>{
-    const newres = await axios.put("/api/auth/losing",{id:storagedata._id,winid:loseid});
   }
 
   useEffect(() => {
     getwinner();
   },[id,index,loader]);
 
-  useEffect(()=>{
-    setlosing()
-  },[])
+  // useEffect(()=>{
+  //   setlosing()
+  // },[])
     return (
 <>
 {

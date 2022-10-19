@@ -30,13 +30,13 @@ const Winner = () => {
     }
     const replaceimage = await axios.put("/api/auth/updateimage",{arr:aadil,id:storagedata._id})
     const addwinimages = await axios.put("/api/auth/addwinimage",{arr:aadil,id:storagedata._id})
+    const newres = await axios.put("/api/auth/winning",{id:storagedata._id,loseid:loseid});
 
  }
   };
 
 
   const setwinning = async()=>{
-    const newres = await axios.put("/api/auth/winning",{id:storagedata._id,loseid:loseid});
   }
 
 
