@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { Card } from './Card';
 
 
@@ -28,7 +29,7 @@ export const Admin = () => {
     },[])
 
   return (
-    <div>
+    <div style = {{width:"100%"}}>
 
 <div style  = {{minHeight:"90vh",display:"flex",justifyContent:"center",alignItems:"center"}}>
 <Card user={usercount} title = "Users" subtitle = "Registered"/>
@@ -36,13 +37,14 @@ export const Admin = () => {
 <Card />
 <Card/>
 </div>
-<table className='table table-bordered'>
+<div style = {{display:"flex",justifyContent:"center"}}>
+<table style = {{width:"70%",justifyContent:"center",border:"none"}} className='table table-borderless'>
 
 <thead style = {{color:"white"}}>
     <tr>
   <th>Users</th>
-  <th>Challenges</th>
-  <th>Status</th>
+  <th>Email</th>
+  <th>Avatar</th>
 
   {/* <th>Manual Reviews</th> */}
   {/* <th>Challenges Won</th>
@@ -57,18 +59,16 @@ export const Admin = () => {
         return(
             <tr>
 <td>{items.username}</td>
-<td>{items.challenges.length}</td>
-
+<td>{items.email}</td>
+<td><img style = {{width:"9%"}} src = {items.avatar}/></td>
 
 </tr>   
             )
     })
 }
-
-
-
 </tbody>
 </table>
+</div>
     </div>
   )
 }
