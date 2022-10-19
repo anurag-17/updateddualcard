@@ -68,8 +68,6 @@ const DuelSomeone = () => {
       });
     }
   }
-
-  console.log(userdata)
  
 
   const handleClose = () => {
@@ -235,16 +233,19 @@ const DuelSomeone = () => {
 
   const handleSearch = (searchword) => {
     let keyword = searchword;
-    const result = newuserdata.filter((user) => {
+    const result =userdata.filter((user) => {
       return user.username.toLowerCase().startsWith(keyword.toLowerCase());
     });
     setsearchfilter(result);
   };
   
+  useEffect(()=>{
+   getuserdata()
+  },[image,isImage,runfun,loader])
+
   useEffect(() => {
     getimages();
     countwinlose();
-    getuserdata()
   },[runfun,image,isImage]);
 
   return (
