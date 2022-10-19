@@ -238,6 +238,7 @@ async(req,res,next)=>{
     {player_1_id:req.body.id},
     {player_2_id:req.body.id}
     ],
+    category:"private"
   })
   return res.json(status)
 }
