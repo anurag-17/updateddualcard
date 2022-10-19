@@ -74,9 +74,7 @@ const DuelSomeone = () => {
   }
 
   console.log(userdata)
-  if(loader===true){
-    getuserdata()
-  }
+
 
   const handleClose = () => {
     setShow(false);
@@ -250,6 +248,7 @@ const DuelSomeone = () => {
   useEffect(() => {
     getimages();
     countwinlose();
+    getuserdata()
   },[runfun,image,isImage]);
 
   return (
