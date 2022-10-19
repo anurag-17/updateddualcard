@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "./PublicChallenge.css"
 
 export const PublicChallenge = () => {
 const [allchallenge,setAllChallenge] = useState([])
+
 const data = JSON.parse(localStorage.getItem("nftuser"))
+const navigate = useNavigate()
 
 const getallchallenge = async()=>{
   const res = await axios.get("/api/auth/getallchallenge")
@@ -41,7 +43,7 @@ getallchallenge()
     allchallenge.map((items,index)=>{
       console.log(items._id)
     return(
-  <tr onClick={()=>{}}>
+  <tr style = {{"cursor":"pointer"}} onClick={()=>{navigate(`/publicRecieve/${items._id}`)}}>
   <td>{items.player_1[0].name}</td>
   <td>{items.player_1[0].link}</td>
   <td>{items.player_1[0].gamechoice}</td>
