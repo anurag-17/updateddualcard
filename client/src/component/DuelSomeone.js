@@ -53,17 +53,13 @@ const DuelSomeone = () => {
 
 
   const getuserdata = async()=> {
-    const res = await axios.post("/api/auth/getuserdata");
+    const res = await axios.post("/api/auth/getuserdata",{id:storagedata._id});
     if(res){
       setUserdata(res.data);
-      
       userdata.sort((a, b) => a.username.localeCompare(b.username));
-      const filtereduser = userdata.filter((items, index) => {
-        return items._id !==storagedata._id;
-      });
-      console.log(filtereduser)
-      setsearchfilter(filtereduser);
-      filtereduser.map((items, index) => {
+      setsearchfilter(userdata);
+      setnewuserdata(userdata)
+      userdata.map((items, index) => {
         if (index === 0) {
           settargetname(items.username);
           setclickeduser(items._id);
@@ -72,7 +68,7 @@ const DuelSomeone = () => {
       });
     }
   }
-  console.log(searchfilter)
+
   console.log(userdata)
  
 
@@ -249,7 +245,7 @@ const DuelSomeone = () => {
     getimages();
     countwinlose();
     getuserdata()
-  },[runfun,image,isImage,loader]);
+  },[runfun,image,isImage]);
 
   return (
     <div>

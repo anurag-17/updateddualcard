@@ -15,7 +15,7 @@ export const postimage=(userdata)=> async (dispatch, getState) => {
     
   };
 
-  export const getuserdata = ()=>async(dispatch,getState)=>{
+  export const userdata = ()=>async(dispatch,getState)=>{
     try{
       dispatch({type:USER_REQUEST})
       const {data} = await axios.post("/api/auth/getuserdata")

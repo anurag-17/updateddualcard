@@ -9,7 +9,7 @@
     "@coreui/icons-react": "^2.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^0.27.2",
+    "axios":"^0.27.2",
     "http-proxy-middelware": "^0.0.1-security",
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
