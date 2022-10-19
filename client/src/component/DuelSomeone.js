@@ -44,11 +44,17 @@ const DuelSomeone = () => {
   const [winning, setwinning] = useState("");
   const [losing, setlosing] = useState("");
   const [filesize, setfilesize] = useState();
+  const [inter,setinter] = useState(false)
 
   setTimeout(() => {
     setrunfun(false);
     setLoader(false)
+    setInterval(()=>{
+        setinter(true)
+    },2000)
   },1000);
+
+
 
   const getuserdata = async()=> {
     const res = await axios.post("/api/auth/getuserdata");
@@ -70,7 +76,7 @@ const DuelSomeone = () => {
 
   useEffect(()=>{
       getuserdata()
-  },[runfun,loader])
+  },[runfun,loader,inter])
 
 
   const handleClose = () => {
@@ -217,6 +223,12 @@ const DuelSomeone = () => {
       playeronelink: linkurl,
       gamechoice:gamechoice
     });
+
+    if(res){
+      navigate("/thankyou");
+      setLoader(false);
+    }
+
 
   }
   const handleuserclick = async (e) => {
