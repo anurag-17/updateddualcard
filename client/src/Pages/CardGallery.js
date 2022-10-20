@@ -23,7 +23,7 @@ export const CardGallery = () => {
     const res = await axios.post("/api/auth/getuserdata")
     if(res){
       setloader(false)
-    const filtereddata =  res.data.filter((items,index)=>{
+    const filtereddata =  res.data.filter((items,index,a)=>{
           return items._id === userdata._id
       })
      setImage(filtereddata)
@@ -35,6 +35,7 @@ export const CardGallery = () => {
   },[])
   
   image.map((items,index)=>{
+    
     items.wonimages.map((item,index)=>{
       console.log(item)
     })

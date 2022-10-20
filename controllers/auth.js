@@ -223,7 +223,9 @@ exports.acceptChallenge = catchAsyncError(
       player_2:[
       {
         images:req.body.playertwo_url,
-        name:req.body.name
+        name:req.body.name,
+        text:req.body.text,
+        gamechoice:req.body.gamechoice
       },
     ],
   })

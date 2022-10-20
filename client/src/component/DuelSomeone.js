@@ -16,7 +16,7 @@ import { Usernames } from "./tab/Usernames";
 
 const DuelSomeone = () => {
   const navigate = useNavigate();
-  const { image, loading, isImage } = useSelector((state) => state.image);
+  const {image,loading,isImage } = useSelector((state) => state.image);
   const storagedata = JSON.parse(localStorage.getItem("nftuser"));
   const dispatch = useDispatch();
   const [targetname, settargetname] = useState("");
@@ -53,27 +53,33 @@ const DuelSomeone = () => {
 
 
   const getuserdata = async()=> {
+   
     const res = await axios.post("/api/auth/getuserdata",{id:storagedata._id});
-    if(res){
       setUserdata(res.data);
-      userdata.sort((a, b) => a.username.localeCompare(b.username));
-      setsearchfilter(userdata);
-      setnewuserdata(userdata)
-      userdata.map((items, index) => {
-        if (index === 0) {
-          settargetname(items.username);
-          setclickeduser(items._id);
-          settargetname(items.username);
-        }
-      });
-    }
   }
- 
+
+  console.log(userdata)
+
+  const test = ()=>{
+    userdata.sort((a, b) => a.username.localeCompare(b.username));
+    setsearchfilter(userdata);
+    setnewuserdata(userdata)
+    userdata.map((items, index) => {
+      if (index === 0) {
+        settargetname(items.username);
+        setclickeduser(items._id);
+        settargetname(items.username);
+      }
+    });
+  }
 
   const handleClose = () => {
     setShow(false);
   };
-  const handleShow=()=>setShow(true);
+  const handleShow=()=>{
+    setinter(true)
+    setShow(true)
+  }
 
   const handlefile = (e) => {
     let file = e.target.files[0].size/1024;
@@ -113,6 +119,7 @@ const DuelSomeone = () => {
   encodefile(selectedimage[0]);
 
   const handlesubmit = async () => {
+     
     dispatch(postimage(data));
     setShow(false);
   };
@@ -154,6 +161,7 @@ const DuelSomeone = () => {
   console.log(gamechoice)
   const sendValue = async (e) => {
     e.preventDefault();
+    setinter(true)
     setLoader(true);
     if (checkedimage.length <= 0) {
       setErrorMessage("please select cards");
@@ -239,8 +247,12 @@ const DuelSomeone = () => {
   };
   
   useEffect(()=>{
-   getuserdata()
-  })
+      getuserdata()
+  },[])
+  useEffect(()=>{
+    test()
+},[userdata])
+
 
   useEffect(() => {
     getimages();

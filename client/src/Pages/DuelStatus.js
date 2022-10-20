@@ -87,18 +87,16 @@ export const DuelStatus = () => {
                             </td>):
                               (
                                 <td>
-                                  
                                   {/* <Link to = "/loser/632c2b07521e8b37eada3495/player_1"> */}
-
-                                  <button disabled className="table-hero-btn">
+                                  <button style={{border:"none",fontFamily:"'Roboto',sans-serif"}} disabled className="table-hero-btn">
                                     Go To Challenge
                                   </button>
                                   {/* </Link> */}
                                 </td>
                               )}
-                              <td>
+                              <td className="resultd">
                                 {
-                                  items.result==="pending"?<h4>pending</h4>:items.result==="Manual Review"?<h4>Manual Review</h4>:items.winner===data._id?<h4 style ={{color:"green"}}>Winner</h4>:<h4 style ={{color:"red"}}>Loser</h4>
+                                  items.result==="pending"?<h6>pending</h6>:items.result==="Manual Review"?<h6>Manual Review</h6>:items.winner===data._id?<h6 style ={{color:"green"}}>Winner</h6>:<h6 style ={{color:"red"}}>Loser</h6>
                                 }
                               </td>
                             </tr>
