@@ -344,7 +344,7 @@ searchfilter.map((items,index)=>{
               <div className='col-md-6 rule-img2'>
                 <img src="./nefti-img21.png" alt="img"/>
               </div>
-              <div className='col-md-6'>
+              {/* <div className='col-md-6'>
                 <div className='rule-ct'>
                   <h3>Rules</h3>
                   <p>The two contestants would submit their NFTs to the escrow account before beginning the challenge. Once the terms are agreed upon, the Duel begins!</p>
@@ -355,7 +355,7 @@ searchfilter.map((items,index)=>{
                       </Link>
                    </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
