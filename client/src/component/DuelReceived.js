@@ -105,7 +105,13 @@ const navigate = useNavigate()
     setAcceptLoader(true)
         let acceptindex = index
         acceptchallenge = true
-    const res = await axios.put("/api/auth/acceptchallenge",{Accept:acceptchallenge,challengerid:challengedata[acceptindex]._id,decline:false,playertwo_url:checkedimage,name:playertwoname})
+    const res = await axios.put("/api/auth/acceptchallenge",{
+      Accept:acceptchallenge,
+      challengerid:challengedata[acceptindex]._id,
+      decline:false,
+      playertwo_url:checkedimage,
+      name:playertwoname
+    })
     if(res){
       navigate("/DuelAccepted")
 }
@@ -134,14 +140,13 @@ const getimages = async()=>{
     const res = await axios.post("/api/auth/getdata",user).then((data) => {
       setuserimagedata(data.data);
     });
-
   }
 
   
   useEffect(() => {
     getimages();
-  getrecieved();
-countwinlose()
+    getrecieved();
+    countwinlose()
   },[image,loading,isImage,userimagedata]);
 
   return (
@@ -159,7 +164,6 @@ countwinlose()
 
 {
     challengedata.length>0?<>
-    
           <div className="row duel-main">
           {
               challengedata.map((items,index)=>{
@@ -232,7 +236,6 @@ return(
                     {
                      userimagedata.map((items,index)=>{
                        return(
-
                          <div key={index} className="grid-two imageandtext">
                          <div className="imageandtext image_grid">
                          <label>
@@ -255,7 +258,7 @@ return(
                      })
                     }
                <div
-                                 style={{
+                      style={{
                                    border: "2px dashed #4A6BBC",
                                    borderRadius: "16px",
                                    width:"130px"
@@ -310,13 +313,31 @@ errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} class
                   <div className="duel-form">
                     <div className="mb-3 mt-4">
                       <textarea
+                      style= {{backgroundColor:"#282454"}}
                         className="form-control"
                         id="exampleFormControlTextarea1"
-                        placeholder="Write your terms"
+                        placeholder="Enter Your Terms Here"
                         rows="10"
                       ></textarea>
                     </div>
                   </div>
+                  <div className="search-bar">
+                                  <div className="input-group md-form form-sm form-2 pl-0">
+                                    <input
+                                      type="text"
+                                      required
+                                      // onInvalid={handleurl}
+                                      className="form-control my-0 py-1 red-border"
+                                      placeholder="Game Of Choice"
+                                      aria-label="Search"
+                                      // onChange={(e) =>
+                                      //   setGameChoice(e.target.value)
+                                      // }
+                                    />
+
+                                    <div className="input-group-append"></div>
+                                  </div>
+                                </div>
                   <div className="btn-duel-right">
                     <button onClick={()=>AcceptChallenge(index)} className="hero-btn">Accept challenge</button>
                     <button onClick={DeclineChallenge} className="hero-btn">Decline challenge</button>

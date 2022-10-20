@@ -72,12 +72,20 @@ export const DuelStatus = () => {
                               items.result === "pending"?(
                                 <td>
                                   <Link to="/DuelAccepted">
-                                    <button className="table-hero-btn">
+                                    <button style={{color:"white",border:"none",fontFamily:"'Roboto',sans-serif"}}  className="table-hero-btn">
                                       Go To Challenge
                                     </button>
                                   </Link>
                                 </td>
-                              ):(
+                              ):items.Accept==="pending"&&items.result === "pending"?(
+                              <td>
+                              <Link to="/DuelReceived">
+                                <button style={{color:"white",border:"none",fontFamily:"'Roboto',sans-serif"}} className="table-hero-btn">
+                                  Go To Challenge
+                                </button>
+                              </Link>
+                            </td>):
+                              (
                                 <td>
                                   
                                   {/* <Link to = "/loser/632c2b07521e8b37eada3495/player_1"> */}
