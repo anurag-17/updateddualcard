@@ -32,7 +32,8 @@ const [errromessage,setErrorMessage] = useState("")
 const [challengerid,setChallengerId]  = useState("")
 const [winning,setwinning] = useState("")
 const [losing,setlosing] = useState("")
-
+const [text,setText] = useState("")
+const [gamechoice,setGameChoice] = useState("")
 let  acceptchallenge = ""
 const user = storagedata.username
 
@@ -110,7 +111,9 @@ const navigate = useNavigate()
       challengerid:challengedata[acceptindex]._id,
       decline:false,
       playertwo_url:checkedimage,
-      name:playertwoname
+      name:playertwoname,
+      gamechoice:gamechoice,
+      text:text
     })
     if(res){
       navigate("/DuelAccepted")
@@ -313,10 +316,12 @@ errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} class
                   <div className="duel-form">
                     <div className="mb-3 mt-4">
                       <textarea
-                      style= {{backgroundColor:"#282454"}}
+                      onChange={(e)=>setText(e.target.value)}
+                      style= {{backgroundColor:"#282454",color:"white"}}
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         placeholder="Enter Your Terms Here"
+                        required
                         rows="10"
                       ></textarea>
                     </div>
@@ -330,9 +335,9 @@ errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} class
                                       className="form-control my-0 py-1 red-border"
                                       placeholder="Game Of Choice"
                                       aria-label="Search"
-                                      // onChange={(e) =>
-                                      //   setGameChoice(e.target.value)
-                                      // }
+                                      onChange={(e) =>
+                                        setGameChoice(e.target.value)
+                                      }
                                     />
 
                                     <div className="input-group-append"></div>

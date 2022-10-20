@@ -1,21 +1,22 @@
 .buyduelcard {
     background-color: #121127;
     padding: 40px 0px;
-
 }
 .buydue-bg {
     /* background-color: #282454; */
-    width: 35%;
     border-radius: 32px;
-    /* padding: 20px; */
+    padding: 20px;
 }
+
+
+
 .buyduel-img img {
     max-width: 100%;
     height: 100%;
     border-radius: 27px;
 }
 .buyduel-img img {
-    width:100%;
+    width: 100%;
     transition: ease-in-out 0.5s;
 }
 
@@ -25,12 +26,10 @@
 }
 
 .buydel-main {
-    display:flex;
-    justify-content: center;
+    display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 35px;
     padding: 30px 0px;
-
 }
 .buyduel-img {
     text-align: center;
@@ -69,7 +68,7 @@
 }
 .buydel-main {
     grid-gap: 35px;
-    max-width: 100%;
+    max-width: 95%;
     margin: 0 auto;
 }
 
