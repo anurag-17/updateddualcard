@@ -58,8 +58,6 @@ const DuelSomeone = () => {
       setUserdata(res.data);
   }
 
-  console.log(userdata)
-
   const test = ()=>{
     userdata.sort((a, b) => a.username.localeCompare(b.username));
     setsearchfilter(userdata);
