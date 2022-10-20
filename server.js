@@ -73,10 +73,8 @@ app.post("/upload",(req,res)=>{
 
 
 app.get("/getuser",async(req,res,next)=>{
-
   const user = await User.find()
   return res.json(user)
-
 })
 
 // app.post("/deleteuser",async(req,res)=>{

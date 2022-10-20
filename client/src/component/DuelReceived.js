@@ -101,6 +101,18 @@ const navigate = useNavigate()
     setErrorMessage("")
       },2200)
           return
+        }else if(gamechoice.length<=0){
+          setErrorMessage("Please fill the game of choice")
+          setTimeout(()=>{
+            setErrorMessage("")
+              },2200)
+              return
+        }else if(text.length<=0){
+          setErrorMessage("please fill the terms")
+          setTimeout(()=>{
+            setErrorMessage("")
+              },2200)
+              return
         }
 
     setAcceptLoader(true)
@@ -315,6 +327,7 @@ errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} class
                   </div>
                   <div className="duel-form">
                     <div className="mb-3 mt-4">
+
                       <textarea
                       onChange={(e)=>setText(e.target.value)}
                       style= {{backgroundColor:"#282454",color:"white"}}
@@ -331,7 +344,6 @@ errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} class
                                     <input
                                       type="text"
                                       required
-                                      // onInvalid={handleurl}
                                       className="form-control my-0 py-1 red-border"
                                       placeholder="Game Of Choice"
                                       aria-label="Search"
