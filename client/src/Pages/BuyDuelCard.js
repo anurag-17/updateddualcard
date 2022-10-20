@@ -1,7 +1,7 @@
 import React from 'react';
 import './buyduelcard.css';
 import Form from 'react-bootstrap/Form';
-import img1 from "../images/1.jpg"
+import img1 from "../Edited/1.png"
 import img2 from "../images/2.jpg"
 import img3 from "../images/3.jpg"
 import img4 from "../images/4.jpg"
@@ -15,7 +15,7 @@ const BuyDuelCard = () => {
       <div className='buyduelcard'>
         <div className='container'>
           <div className='section-title'>
-                    <h2>Buy Duel Card</h2>
+              <h2>Buy DuelCards</h2>
           </div>
           <div className='row buydel-main'>
             <div className='buydue-bg'>
@@ -39,7 +39,7 @@ const BuyDuelCard = () => {
               </div>
             </div>
 
-            <div className='buydue-bg'>
+            {/* <div className='buydue-bg'>
               <div className='buy-cont'>
                 <div className='buyduel-img'>
                   <img src={img2} alt="img"/> 
@@ -59,7 +59,6 @@ const BuyDuelCard = () => {
                  </div>
               </div>
             </div>
-
             <div className='buydue-bg'>
               <div className='buy-cont'>
                 <div className='buyduel-img'>
@@ -80,7 +79,6 @@ const BuyDuelCard = () => {
                  </div>
               </div>
             </div>
-
             <div className='buydue-bg'>
               <div className='buy-cont'>
                 <div className='buyduel-img'>
@@ -101,7 +99,6 @@ const BuyDuelCard = () => {
                  </div>
               </div>
             </div>
-
             <div className='buydue-bg'>
               <div className='buy-cont'>
                 <div className='buyduel-img'>
@@ -122,7 +119,6 @@ const BuyDuelCard = () => {
                  </div>
               </div>
             </div>
-
             <div className='buydue-bg'>
               <div className='buy-cont'>
                 <div className='buyduel-img'>
@@ -142,7 +138,7 @@ const BuyDuelCard = () => {
                    <button className='hero-btn'>BUY NOW</button>
                  </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

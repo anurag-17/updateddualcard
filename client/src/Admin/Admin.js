@@ -28,14 +28,22 @@ export const Admin = () => {
     },[])
 
   return (
-    <div style = {{width:"100%"}}>
+    <div style = {{width:"100%",height:"100vh"}}>
 
-<div style  = {{minHeight:"90vh",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <div className="challengetable">
+
+<table>
+
+</table>
+
+      </div>
+
+{/* <div style  = {{minHeight:"90vh",display:"flex",justifyContent:"center",alignItems:"center"}}>
 <Card user={usercount} title = "Users" subtitle = "Registered"/>
 <Card user={allchallenge.length} title="Challenges"/>
 <Card />
 <Card/>
-</div>
+</div> */}
 <div style = {{display:"flex",justifyContent:"center"}}>
 <table style = {{width:"70%",justifyContent:"center",border:"none"}} className='table table-borderless'>
 
@@ -46,7 +54,7 @@ export const Admin = () => {
   <th>Avatar</th>
   <th>Winning</th>
   <th>Losing</th>
-  <th>Manual Reviews</th>
+  {/* <th>Manual Reviews</th> */}
   {/* <th>Challenges Won</th>
   <th>Challenges Lost</th> */}
     </tr>
