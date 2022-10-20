@@ -21,9 +21,8 @@ export const Admin = () => {
 
     const res = await axios.get("/api/auth/getallchallenge")
     setAllchallenge(res.data)
-
   }
-
+  
   useEffect(() => {
     getuserdata()
     getallchallenges()

@@ -23,14 +23,11 @@ export const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		
 		dispatch(login(inputdata))
-	
 		setInputData({
 		   email:"",
 		   password:""
 		  });
-	
 	}
 
 	useEffect(()=>{
