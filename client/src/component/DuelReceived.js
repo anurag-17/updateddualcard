@@ -181,10 +181,8 @@ const getimages = async()=>{
     challengedata.length>0?<>
           <div className="row duel-main">
           {
-              challengedata.map((items,index)=>{
-                                    
+              challengedata.map((items,index)=>{               
                   return(
-                      
                     <React.Fragment key= {items._id}>
             <div className="col-md-4 col-sm-12 duel-left">
               <div className="duel-lef-slide">

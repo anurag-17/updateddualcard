@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 import { Card } from './Card';
 import "./Admin.css"
 
-
 export const Admin = () => {
   const [usercount, setUserCount] = useState()
   const [userdata, setuserdata] = useState([])
   const [allchallenge, setAllchallenge] = useState([])
-
 
   const getuserdata = async () => {
     const res = await axios.post("/api/auth/getuserdata");
@@ -20,7 +18,7 @@ export const Admin = () => {
   const getallchallenges = async () => {
 
     const res = await axios.get("/api/auth/getallchallenge")
-    setAllchallenge(res.data)
+    setAllchallenge(res.data.filter((items,index)=>items.category==="private"))
   }
   
   useEffect(() => {
@@ -100,7 +98,6 @@ export const Admin = () => {
                 <th>Loser</th>
                 <th>Game Link</th>
                 {/* <th>Reciever Link</th> */}
-
 
               </tr>
             </thead>

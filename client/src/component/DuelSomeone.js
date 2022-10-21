@@ -51,11 +51,9 @@ const DuelSomeone = () => {
     setLoader(false)
   },1000);
 
-
   const getuserdata = async()=> {
-   
     const res = await axios.post("/api/auth/getuserdata",{id:storagedata._id});
-      setUserdata(res.data);
+     setUserdata(res.data);
   }
 
   const test = ()=>{
@@ -167,7 +165,7 @@ const DuelSomeone = () => {
         setErrorMessage("");
       }, 2200);
       return;
-    } else if (!targetname) {
+    }else if (!targetname) {
       setErrorMessage("please select a name");
       setTimeout(() => {
         setErrorMessage("");
@@ -300,9 +298,8 @@ const DuelSomeone = () => {
                             >
                               {" "}
                               <img
-                                src={require(`../images/tabicon-${
-                                  index + 1
-                                }.png`)}
+                              style = {{width:"40px"}}
+                                src={items.avatar}
                                 alt="img"
                               />
                               {items.username}
