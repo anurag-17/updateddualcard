@@ -12,6 +12,7 @@ import "../Pages/tickimage.css";
 import { useAlert } from "react-alert";
 
 const DuelReceived = () => {
+const navigate = useNavigate()
   const alert = useAlert()
   const dispatch = useDispatch()
   const { image,loading,isImage} = useSelector((state) => state.image);
@@ -37,7 +38,6 @@ const [gamechoice,setGameChoice] = useState("")
 let  acceptchallenge = ""
 const user = storagedata.username
 
-const navigate = useNavigate()
 
   const id=storagedata._id;
   
