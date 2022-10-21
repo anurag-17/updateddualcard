@@ -35,6 +35,8 @@ getallchallenge()
     <th>Twitch/Youtube</th>
     <th>Game of Choice</th>
     <th>Terms</th>
+    <th>Accept Challenge</th>
+
 </tr>
 
 </thead>
@@ -48,6 +50,9 @@ getallchallenge()
   <td>{items.player_1[0].link}</td>
   <td>{items.player_1[0].gamechoice}</td>
   <td>{items.player_1[0].text}</td>
+  <th>
+<button style = {{color:"white"}} className='table-hero-btn'>Accept Challenge</button>
+    </th>
   </tr>
     )
     })

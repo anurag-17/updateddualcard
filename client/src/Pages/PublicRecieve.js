@@ -6,16 +6,18 @@ import axios from 'axios';
 import { Loader } from '../component/Loader';
 import img1 from "../images/Plus.png";
 import { Button, Modal } from "react-bootstrap";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postimage } from '../actions/apiAction';
 
 export const PublicRecieve = () => {
   const dispatch = useDispatch()
+  const { image,loading,isImage} = useSelector((state) => state.image);
   const [challenge, setChallenge] = useState([])
+  
   const [selectedimage,setselectedimage] = useState([]);
   const [show, setShow] = useState(false)
   const [userimagedata, setuserimagedata] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loader, setLoader] = useState(true)
   const [checkedimage, setcheckedimage] = useState([]);
   const [data,setdata] = useState({
     image:"",
@@ -34,12 +36,32 @@ export const PublicRecieve = () => {
   const getallchallenge = async () => {
     const res = await axios.get("/api/auth/getallchallenge")
     if (res) {
-      setLoading(false)
+      setLoader(false)
       setChallenge(res.data.filter((items, index) => {
         return items._id === id && items.Accept === "pending"
       }))
     }
   }
+
+  const encodefile = (file)=>{
+    var reader = new FileReader()
+
+    if(file){
+        reader.readAsDataURL(file)
+        reader.onload = ()=>{
+            var base64 = reader.result
+            setdata({
+                image:base64,
+                userId:storagedata._id,
+            })
+            // setfilebaseurl(base64)
+        }
+    reader.onerror = (error)=>{
+        alert("something went wrong")
+    }
+    }
+}
+encodefile(selectedimage[0])
 
   const handlesubmit=async()=>{
     dispatch(postimage(data));
@@ -67,13 +89,15 @@ export const PublicRecieve = () => {
   useEffect(() => {
     getallchallenge()
     getimages()
-  }, [id])
+  },[image,loading,isImage,userimagedata])
 
   return (
     <>
       {
-        loading ? <Loader /> : <div>
+        loader?<Loader /> : <div>
           <div className='DuelRec-sec'>
+            {
+              loading?<Loader/>:
             <div className='container'>
               <div className='section-title'>
                 <h2>Duel Received</h2>
@@ -129,7 +153,6 @@ export const PublicRecieve = () => {
                     )
                   })
                 }
-
                 <div className='col-md-2 duel-center'>
                   <img src="/VS icon.png" alt="img" />
                 </div>
@@ -158,7 +181,6 @@ export const PublicRecieve = () => {
                                   </label>
                                 </div>
                               </div>
-
                             )
                           })
                         }
@@ -236,8 +258,10 @@ export const PublicRecieve = () => {
                           </Button>
                         </Modal.Footer>
                       </Modal>
+
               </div>
             </div>
+            }
           </div>
         </div>
       }
