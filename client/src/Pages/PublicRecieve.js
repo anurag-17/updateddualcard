@@ -13,7 +13,6 @@ export const PublicRecieve = () => {
   const dispatch = useDispatch()
   const { image,loading,isImage} = useSelector((state) => state.image);
   const [challenge, setChallenge] = useState([])
-  
   const [selectedimage,setselectedimage] = useState([]);
   const [show, setShow] = useState(false)
   const [userimagedata, setuserimagedata] = useState([])

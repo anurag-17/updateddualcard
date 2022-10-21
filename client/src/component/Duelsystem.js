@@ -10,7 +10,7 @@ import greenright from "../images/NFT-img_top-right.svg";
 import centerright from "../images/centerright.svg";
 import centerleft from "../images/centerleft.svg";
 
-import backgroundlines from "../images/line-back.svg";
+import backgroundlines from "../Edited/line-back.svg";
 
 import Cardflip from './Cardflip';
 import { Link } from 'react-router-dom';
