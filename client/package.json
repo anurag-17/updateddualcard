@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "homepage": "https://duocard.herokuapp.com/",
   "private": true,
+  "engines": {
+    "node":">12.13.0"
+},
   "proxy": "http://localhost:5000/",
   "dependencies": {
     "@coreui/icons": "^2.1.0",
