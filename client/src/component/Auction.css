@@ -116,7 +116,7 @@
   }
   ul#select2-id_select2_example-results li div {
       display: flex !important;
-      align-items:end;
+      align-items:flex-end;
   }
 
   .md-image-text-item {
