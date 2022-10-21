@@ -4,7 +4,7 @@
   "homepage": "https://duocard.herokuapp.com/",
   "private": true,
   "engines": {
-    "node":">12.13.0"
+    "node":">=12.13.0"
 },
   "proxy": "http://localhost:5000/",
   "dependencies": {
@@ -32,9 +32,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "test": "DISABLE_ESLINT_PLUGIN=true react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
