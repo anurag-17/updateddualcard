@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../component/DuelReceived.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Loader } from '../component/Loader';
 import img1 from "../images/Plus.png";
@@ -11,18 +11,23 @@ import { postimage } from '../actions/apiAction';
 
 export const PublicRecieve = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { image,loading,isImage} = useSelector((state) => state.image);
   const [challenge, setChallenge] = useState([])
+  const [playertwoname,setplayertwoname] = useState("")
   const [selectedimage,setselectedimage] = useState([]);
   const [show, setShow] = useState(false)
   const [userimagedata, setuserimagedata] = useState([])
   const [loader, setLoader] = useState(true)
   const [checkedimage, setcheckedimage] = useState([]);
+  const [text,setText] = useState("")
+const [gamechoice,setGameChoice] = useState("")
   const [data,setdata] = useState({
     image:"",
     userId:""
   })
-
+  let  acceptchallenge = ""
+  const [errromessage,setErrorMessage] = useState("")
   const storagedata = JSON.parse(localStorage.getItem("nftuser"))
   const {id} = useParams()
 
@@ -40,6 +45,45 @@ export const PublicRecieve = () => {
         return items._id === id && items.Accept === "pending"
       }))
     }
+  }
+
+
+  const AcceptChallenge = async(index)=>{
+    if(checkedimage.length<=0){
+      setErrorMessage("please select the cards")
+      setTimeout(()=>{
+    setErrorMessage("")
+      },2200)
+          return
+        }else if(gamechoice.length<=0){
+          setErrorMessage("Please fill the game of choice")
+          setTimeout(()=>{
+            setErrorMessage("")
+              },2200)
+              return
+        }else if(text.length<=0){
+          setErrorMessage("please fill the terms")
+          setTimeout(()=>{
+            setErrorMessage("")
+              },2200)
+              return
+        }
+        setLoader(true)
+        let acceptindex = index
+        acceptchallenge = true
+    const res = await axios.put("/api/auth/acceptchallenge",{
+      Accept:acceptchallenge,
+      challengerid:challenge,
+      decline:false,
+      playertwo_url:checkedimage,
+      name:playertwoname,
+      gamechoice:gamechoice,
+      text:text
+    })
+    if(res){
+      setLoader(false)
+      navigate("/DuelAccepted")
+}
   }
 
   const encodefile = (file)=>{
@@ -106,6 +150,7 @@ encodefile(selectedimage[0])
                 {
                   challenge.map((items, index) => {
                     return (
+                      <>
                       <div className='col-md-4 col-sm-12 duel-left'>
                         <div className='duel-lef-slide'>
                           <div className='duel-sldier'>
@@ -149,9 +194,6 @@ encodefile(selectedimage[0])
                           <h4>{items.player_1[0].text}</h4>
                         </div>
                       </div>
-                    )
-                  })
-                }
                 <div className='col-md-2 duel-center'>
                   <img src="/VS icon.png" alt="img" />
                 </div>
@@ -226,7 +268,7 @@ encodefile(selectedimage[0])
                         </div>
                       </div>
                       <div className='btn-duel-right'>
-                        <button className='hero-btn'>accept challenge</button>
+                      <button onClick={()=>AcceptChallenge(index)} className="hero-btn">Accept challenge</button>
                         <button
                           // onClick={DeclineChallenge} 
                           className="hero-btn">Decline challenge</button>
@@ -257,6 +299,10 @@ encodefile(selectedimage[0])
                           </Button>
                         </Modal.Footer>
                       </Modal>
+                      </>
+                    )
+                  })
+                }
 
               </div>
             </div>
