@@ -354,7 +354,7 @@ errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} class
                                   </div>
                                 </div>
                   <div className="btn-duel-right">
-                    <button onClick={()=>AcceptChallenge(index)} className="hero-btn">Accept challenge</button>
+                    <button onClick={AcceptChallenge} className="hero-btn">Accept challenge</button>
                     <button onClick={DeclineChallenge} className="hero-btn">Decline challenge</button>
                   </div>
                 </div>

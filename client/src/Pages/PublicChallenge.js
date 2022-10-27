@@ -14,11 +14,10 @@ const getallchallenge = async()=>{
 
   if(res){
   const filtered =  res.data.filter((items,index)=>{
-    return  items.category==="public"&&items.player_1_id !==data._id
+    return  items.category==="public"&&items.player_1_id !==data._id&&items.Accept==="pending"
     })
    setAllChallenge(filtered)
   }
-  
 }
 
 useEffect(()=>{
@@ -36,7 +35,6 @@ getallchallenge()
     <th>Game of Choice</th>
     <th>Terms</th>
     <th>Accept Challenge</th>
-
 </tr>
 
 </thead>

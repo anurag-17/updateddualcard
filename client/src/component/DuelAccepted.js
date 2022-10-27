@@ -32,8 +32,7 @@ export const DuelAccepted = () => {
       setLoader(false)
     }
     setchallengedata(newres.data);
-  
-
+    
     newres.data.map((items, index)=>{
       console.log(items)
      setLastDate(new Date(items.createdAt).getTime()+259200000)
