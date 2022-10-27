@@ -33,7 +33,7 @@ setToggle(!toggle)
 
 setTimeout(async()=>{
    const res = await axios.put("/api/auth/updatenotification",{id:data._id})
-},[3000])
+},[8000])
 }
 console.log(toggle)
      window.addEventListener('scroll', changeNavbarColor);
@@ -158,7 +158,7 @@ const logoutuser = () => {
       </Badge>
     </div>
                         </Link>
-                        <ul style={{backgroundColor:"#3C2485",textAlign:"center"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                        <ul style={{backgroundColor:"#3C2485",textAlign:"center",color:"white"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                           {
                             notification.map((items,index)=>{
                               return(

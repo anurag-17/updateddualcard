@@ -24,9 +24,12 @@ const navigate = useNavigate()
   const [selectedimage,setselectedimage] = useState([]);
   const [playertwoname,setplayertwoname] = useState("")
   const [challengedata, setchallengedata] = useState([]);
+  const [playeronename,setplayeronename]  = useState("")
 const [loader,setLoader] = useState(true)
 const [acceptloader,setAcceptLoader] = useState(false)
 const [show,setShow] = useState(false)
+const [playeroneid,setplayeroneId] = useState("")
+const [playertwoid,setplayertwoId] = useState("")
 const [userimagedata, setuserimagedata] = useState([]);
 const [checkedimage, setcheckedimage] = useState([]);
 const [errromessage,setErrorMessage] = useState("")
@@ -56,6 +59,9 @@ const user = storagedata.username
     res.data.map((items,index)=>{
       setChallengerId(items._id)
       setplayertwoname(items.player_2[0].name)
+      setplayeronename(items.player_1[0].name)
+      setplayeroneId(items.player_1_id)
+      setplayertwoId(items.player_2_id)
     })
     setchallengedata(res.data);
   };
@@ -124,6 +130,9 @@ const user = storagedata.username
       decline:false,
       playertwo_url:checkedimage,
       name:playertwoname,
+      playeronename:playeronename,
+      playeroneid:playeroneid,
+      playertwoid:playertwoid,
       gamechoice:gamechoice,
       text:text
     })
