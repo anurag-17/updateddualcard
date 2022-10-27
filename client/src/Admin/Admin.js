@@ -17,7 +17,6 @@ export const Admin = () => {
   }
 
   const getallchallenges = async () => {
-
     const res = await axios.get("/api/auth/getallchallenge")
     setAllchallenge(res.data.filter((items,index)=>items.category==="private"))
   }

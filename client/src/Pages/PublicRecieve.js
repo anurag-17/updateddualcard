@@ -36,8 +36,6 @@ const [gamechoice,setGameChoice] = useState("")
     setShow(false);
   };
 
-
-
   const getallchallenge = async () => {
     const res = await axios.get("/api/auth/getallchallenge")
     if (res) {
@@ -48,8 +46,7 @@ const [gamechoice,setGameChoice] = useState("")
     }
   }
 
-
-  const AcceptChallenge = async(index)=>{
+  const AcceptChallenge = async()=>{
     if(checkedimage.length<=0){
       setErrorMessage("please select the cards")
       setTimeout(()=>{
@@ -70,12 +67,10 @@ const [gamechoice,setGameChoice] = useState("")
               return
         }
         setLoader(true)
-        const newres = await axios.put("/api/auth/setplayertwoid",{id:id,playertwoid:storagedata._id})
-        let acceptindex = index
-        acceptchallenge = true
-        const res = await axios.put("/api/auth/acceptchallenge",{
-          Accept:acceptchallenge,
-          challengerid:challenge._id,
+        const res = await axios.put("/api/auth/setplayertwo",{
+          challengerid:id,
+          Accept:true,
+          playertwoid:storagedata._id,
           decline:false,
           playertwo_url:checkedimage,
           name:storagedata.username,
@@ -83,6 +78,7 @@ const [gamechoice,setGameChoice] = useState("")
           text:text
         })
     if(res){
+      console.log(res)
       navigate("/DuelAccepted")
 }
   }
