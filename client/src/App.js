@@ -32,6 +32,7 @@ import { CardGallery } from './Pages/CardGallery';
 import { Admin } from './Admin/Admin';
 import { PublicChallenge } from './Pages/PublicChallenge';
 import { PublicRecieve } from './Pages/PublicRecieve';
+import { Challengedetails } from './Admin/Challengedetails';
 // import { AdminLogin } from './Admin/AdminLogin';
 
 function App(){
@@ -97,6 +98,8 @@ const [challengedata,setChallengeData] = useState([])
         <Route path = "/admin" element = {<Admin/>}/>
         <Route path = "/challengemarketplace" element={<ProtectedRoute><PublicChallenge/></ProtectedRoute>}/>
         <Route path = "/publicrecieve/:id" element={<ProtectedRoute><PublicRecieve/></ProtectedRoute>}/>
+        <Route path = "/challengedetails/:id" element={<ProtectedRoute><Challengedetails/></ProtectedRoute>}/>
+
         {/* <Route path = "/adminlogin" element={<AdminLogin/>}/> */}
 
         {/* <Route path = "/duelmarket" element = {<ChallengeMarket/>}/> */}

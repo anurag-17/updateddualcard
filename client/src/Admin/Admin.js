@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate} from 'react-router-dom';
 import { Card } from './Card';
 import "./Admin.css"
 
 export const Admin = () => {
+  const navigate = useNavigate()
   const [usercount, setUserCount] = useState()
   const [userdata, setuserdata] = useState([])
   const [allchallenge, setAllchallenge] = useState([])
@@ -106,7 +107,7 @@ export const Admin = () => {
               {
                 allchallenge.map((items, index) => {
                   return (
-                    <tr>
+                    <tr onClick={()=>navigate(`/challengedetails/${items._id}`)}>
                       {/* <td>{items.category}</td> */}
                       <td>{items.player_1[0].name}</td>
                       <td>{items.player_2[0].name}</td>
