@@ -4,15 +4,16 @@
   "homepage": "https://duocard.herokuapp.com/",
   "private": true,
   "engines": {
-    "node":">=12.13.0"
-},
+    "node": ">=12.13.0"
+  },
   "proxy": "http://localhost:5000/",
   "dependencies": {
     "@coreui/icons": "^2.1.0",
     "@coreui/icons-react": "^2.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios":"^0.27.2",
+    "@material-ui/icons": "^4.11.3",
+    "axios": "^0.27.2",
     "http-proxy-middelware": "^0.0.1-security",
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
@@ -32,10 +33,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start":"react-scripts start",
-    "build":"react-scripts build",
-    "test":"react-scripts test",
-    "eject":"react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

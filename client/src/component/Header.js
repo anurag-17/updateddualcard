@@ -6,10 +6,18 @@ import { Nav } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
 import logo from "../images/Logo.png"
 import tabicon from "../images/tabicon-14.png"
+import Badge from '@material-ui/core/Badge';
+import Notifications from "@material-ui/icons/Notifications";
+import axios from 'axios'
+
+
 
 const Header = () => {
 const navigate  = useNavigate()
 const [colorChange, setColorchange] = useState(false);
+const [notification,setNotification] = useState([])
+const [count,setCount] = useState("")
+const [toggle,setToggle] = useState(false)
 const data = JSON.parse(localStorage.getItem("nftuser"))
 
 const changeNavbarColor = () =>{
@@ -20,15 +28,38 @@ const changeNavbarColor = () =>{
     setColorchange(false);
   }
 };
+const handleclick  = async()=>{
+setToggle(!toggle)
+
+setTimeout(async()=>{
+   const res = await axios.put("/api/auth/updatenotification",{id:data._id})
+},[3000])
+}
+console.log(toggle)
      window.addEventListener('scroll', changeNavbarColor);
 
+     const getnotification = async()=>{
+      const res = await axios.post("/api/auth/getusernotification",{id:data._id})
+      if(res){
+        setCount(res.data.notificationcount)
+    setNotification(res.data.notificationlist.filter((items,index)=>{
+      return items.isRead === 0
+     })) 
+      // setNotification(notificationda
+      }
+      
+     }
+
+     useEffect(()=>{
+      getnotification()
+     })
 
 const logoutuser = () => {
   localStorage.removeItem("nftuser");
   navigate("/register");
 };
 
-  return (   <div className={colorChange ? 'navbar colorChange' : 'navbar'}>
+  return (<div className={colorChange ? 'navbar colorChange' : 'navbar'}>
         <div className='container-fluid topheader desktop-nav fixed-top'>
         <div className='container'>
          <nav className="navbar navbar-expand-lg navbar-light">
@@ -44,7 +75,7 @@ const logoutuser = () => {
                     <li className="nav-item" to="/">                    
                        <Link  to="BuyDuelCard" className="nav-link" aria-current="page">Buy DuelCards</Link>
                     </li>    
-                    <li className="nav-item dropdown">
+                    <li className="nav-item dropdown hover">
                         <Link className="nav-link dropdown-toggle" to="/Marketplace" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Marketplace
                         </Link>
@@ -60,7 +91,7 @@ const logoutuser = () => {
                           </li>     
                         </ul>
                       </li>    
-                    <li className="nav-item dropdown">
+                    <li className="nav-item dropdown hover">
                         <Link className="nav-link dropdown-toggle" to="/DuelSomeone" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                        Duel Someone
                         </Link>
@@ -77,7 +108,7 @@ const logoutuser = () => {
                         </ul>
                       </li>    
                  
-                      <li className="nav-item dropdown">
+                      <li className="nav-item dropdown hover">
                         <Link className="nav-link dropdown-toggle" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Challenge System
                         </Link>
@@ -93,14 +124,16 @@ const logoutuser = () => {
                           </li>                                   
                         </ul>
                     </li> 
+
+    
                                                                    
                 </ul>
-                <form style={{position:"relative",right:"3%"}} className="d-flex">  
+                <form style={{position:"relative",right:"12%"}} className="d-flex">  
                 {
                     localStorage.getItem("nftuser")?
-                    <div style = {{position:"relative"}}>
-                         <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div  style = {{position:"relative",display:"flex",bottom:"10%"}}>
+                         <li style = {{position:"relative",bottom:"24%"}} className="nav-item dropdown hover">
+                        <Link className="nav-link dropdown-toggle nav-drop" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img style = {{width:"17%",borderRadius:"50%"}} src = {data.avatar} alt = "profileimage"/>
                         </Link>
                         <ul style={{backgroundColor:"#3C2485",textAlign:"center"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -113,13 +146,56 @@ const logoutuser = () => {
                         <Link to = "/cardgallery">
                           <button style={{padding:"3px 6px",marginBottom:"10px",backgroundColor:"#273e77",border:"2px solid #ffff",position:"relative",right:"25%"}}  className="btn btn-outline head-btn" type="submit">Gallery</button>
                         </Link>   
-          
                         </ul>
-                        
                     </li> 
+
+                    <li style = {{position:"relative",bottom:'20%'}} className="nav-item dropdown">
+                        <Link className="nav-link dropdown-toggle nav-drop display" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div className="nav-item dropdown" style={{color:"#8d8ddf",position:"relative"}}>
+      <Badge badgeContent={count} 
+      color="primary">
+        <Notifications style = {{cursor:"pointer"}} onClick={handleclick}/>
+      </Badge>
+    </div>
+                        </Link>
+                        <ul style={{backgroundColor:"#3C2485",textAlign:"center"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                          {
+                            notification.map((items,index)=>{
+                              return(
+                                <>
+                              <li>{items.messages}</li>
+                              </>
+                              )
+                            })
+                          }
+                        </ul>
+                    </li>
+
+                    {/* <li style ={{position:"relative",top:"12%"}} className="nav-item dropdown">
+     <div className="nav-item dropdown" style={{color:"#8d8ddf",padding:15,position:"relative",top:"12%"}}>
+      <Badge badgeContent={count} 
+      color="primary">
+        <Notifications style = {{cursor:"pointer"}} onClick={handleclick}/>
+      </Badge>
+    </div>
+    {
+      
+    <div  style={{backgroundColor:"#3C2485"}} className={toggle?"card-visible":"card-display"}>
+      {
+        notification.map((items,index)=>{
+          return(
+
+      <div className="card-body">
+        <p>{items.messages}</p>
+      </div>
+          )
+        })
+      }
+    </div>
+    }
+        </li> */}
                     <>
                     </>
-                  
                     </div>
                     :
                     <Link to="/register">
