@@ -84,7 +84,7 @@ exports.login = catchAsyncError(
 //     messages:message,
 //   });
 // });
-const notification = async(playeroneuserid, playertwouserid, playeronename, playertwoname,message)=>{
+const notification = async(playeroneuserid, playertwouserid, playeronename, playertwoname,message,type)=>{
   console.log(playeronename)
   let challenge = await Notifications.create({
     playeronename: playeronename,
@@ -92,6 +92,7 @@ const notification = async(playeroneuserid, playertwouserid, playeronename, play
     playeroneuserid:playeroneuserid,
     playertwouserid:playertwouserid,
     messages:message,
+    type:type
   });
 }
 
@@ -199,12 +200,12 @@ catchAsyncError(
       ],
     });
 
-    notification(req.body.playeroneuserid, req.body.playertwouserid, req.body.playeronename, req.body.playertwoname,`${req.body.playeronename} sent a challenge`)
+    notification(req.body.playeroneuserid, req.body.playertwouserid, req.body.playeronename, req.body.playertwoname,`${req.body.playeronename} sent you a challenge`,"recieved")
     return res.json(challenge)
   }
   )
 
-
+  
   exports.publicchallenge= catchAsyncError(
     async (req, res,next) => {
       const { recieved, accept, decline } = req.body;
@@ -306,6 +307,7 @@ exports.acceptChallenge = catchAsyncError(
       },
     ],
   })
+  notification(req.body.playertwoid, req.body.playeroneid, req.body.name,req.body.playeronename,`${req.body.name} Accepted your challenge`,"Accepted")
     return res.status(200).json(update)
   }
 

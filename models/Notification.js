@@ -28,6 +28,9 @@ messages:{
 isRead:{
     type:Number,
     default:0
+},
+type:{
+    type:String,
 }
 
 })
