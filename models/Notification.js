@@ -2,6 +2,16 @@ const mongoose = require("mongoose")
 
 const notification = new mongoose.Schema({
 
+    playeroneuserid:{
+type:String,
+required:true
+    },
+
+    playertwouserid:{
+        type:String,
+        required:true
+            },
+
     playeronename:{
     type:String,
     required:true
@@ -14,6 +24,10 @@ playertwoname:{
 messages:{
     type:String,
     
+},
+isRead:{
+    type:Number,
+    default:0
 }
 
 })

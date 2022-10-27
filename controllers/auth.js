@@ -6,6 +6,8 @@ const Challenge = require("../models/challenge");
 const catchAsyncError = require("../Errorhandlers/catchAsyncError")
 const ErrorHandler = require("../config/errorHandler");
 const challenge = require("../models/challenge");
+const Notifications = require("../models/Notification")
+
 
 async function isEmailValid(email) {
   return emailValidator.validate(email);
@@ -68,18 +70,62 @@ exports.login = catchAsyncError(
   }
 ) 
 
-exports.notification = catchAsyncError(async (req, res, next) => {
-  const { playeroneuserid, playertwouserid, playeronename, playertwoname } =
-    req.body;
-  // console.log(req.body);
+// exports.notification = catchAsyncError(async (req, res, next) => {
+//   console.log(req.body)
+//   const {} =
+//     req.body;
+
+
+//   let challenge = await Notifications.create({
+//     playeronename: playeronename,
+//     playertwoname: playertwoname,
+//     playeroneuserid:playeroneuserid,
+//     playertwouserid:playertwouserid,
+//     messages:message,
+//   });
+// });
+const notification = async(playeroneuserid, playertwouserid, playeronename, playertwoname,message)=>{
+  console.log(playeronename)
   let challenge = await Notifications.create({
     playeronename: playeronename,
     playertwoname: playertwoname,
     playeroneuserid:playeroneuserid,
     playertwouserid:playertwouserid,
-    messages: `${playeronename} sent a challenge`,
+    messages:message,
   });
-});
+}
+
+exports.getusernotification = 
+catchAsyncError(
+  async(req, res,next) => {
+    let userdata = await Notifications.find({playertwouserid:req.body.id});
+    let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
+    let notification = {
+      notificationlist:userdata,
+      notificationcount:notificationcount
+    }
+    return res.status(200).json(notification);
+  }
+)
+
+exports.updatenotificationstatus = 
+catchAsyncError(
+  async(req, res,next) => {
+    let userdata = await Notifications.updateMany(
+      {playertwouserid:req.body.id},
+      {
+isRead:1
+      }
+      )
+
+    let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
+    let notification = {
+      notificationlist:userdata,
+      notificationcount:notificationcount
+    }
+    return res.status(200).json(notification);
+  }
+)
 
 exports.isAuthuser =
 catchAsyncError(
@@ -152,6 +198,8 @@ catchAsyncError(
         },
       ],
     });
+
+    notification(req.body.playeroneuserid, req.body.playertwouserid, req.body.playeronename, req.body.playertwoname,`${req.body.playeronename} sent a challenge`)
     return res.json(challenge)
   }
   )
