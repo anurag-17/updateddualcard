@@ -58,9 +58,9 @@ const handlewin=async(e)=>{
       // const expiry = Date.now()+30000
        const res = await axios.put("/api/auth/winnerstatus",{id:e.target.name,result:"pending",decision:"winner",index:1,expiresAt:expiry,createdAt:new Date().getTime()})
        if(res.data.player_1_decision||res.data.player_2_decision!==null){
-        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",winner:player1,loser:player2,createdAt:null})
+        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",winner:player1,loser:player2,createdAt:null,expiresAt:null})
      if(res.data.player_1_decision===res.data.player_2_decision){
-      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null})
+      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null,expiresAt:null})
        navigate("/decinfo")
       }else{
         navigate(`/winner/${e.target.name}/player_${e.target.value}`)
@@ -72,10 +72,10 @@ const handlewin=async(e)=>{
       const expiry = Date.now()+259200000
       const res = await axios.put("/api/auth/winnerstatus",{id:e.target.name,result:"pending",decision:"winner",index:2,expiresAt:expiry,createdAt:new Date().getTime()})
       if(res.data.player_1_decision||res.data.player_2_decision!==null){
-        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",winner:player2,loser:player1,createdAt:null})
+        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",winner:player2,loser:player1,createdAt:null,expiresAt:null})
       console.log(res.data)
       if(res.data.player_1_decision===res.data.player_2_decision){
-        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null})
+        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null,expiresAt:null})
          navigate("/decinfo")
         }else{
           navigate(`/winner/${e.target.name}/player_${e.target.value}`)
@@ -94,9 +94,9 @@ const handlewin=async(e)=>{
       const res=await axios.put("/api/auth/winnerstatus",{id:e.target.name,result:"pending",decision:"loser",index:1,expiresAt:expiry,createdAt:new Date().getTime()})
       console.log(res.data)
       if(res.data.player_1_decision||res.data.player_2_decision!==null){
-        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",loser:player1,winner:player2,createdAt:null})
+        const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",loser:player1,winner:player2,createdAt:null,expiresAt:null})
     if(res.data.player_1_decision===res.data.player_2_decision){
-      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null})
+      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null,expiresAt:null})
       navigate("/decinfo")
     }else{
       navigate(`/loser/${e.target.name}/player_${e.target.value}`)
@@ -109,10 +109,10 @@ const handlewin=async(e)=>{
      const res = await axios.put("/api/auth/winnerstatus",{id:e.target.name,result:"pending",decision:"loser",index:2,expiresAt:expiry,createdAt:new Date().getTime()})
      console.log(res.data)
      if(res.data.player_1_decision||res.data.player_2_decision!==null){
-      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",loser:player2,winner:player1,createdAt:null})
+      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"declare",loser:player2,winner:player1,createdAt:null,expiresAt:null})
       console.log(res.data)
       if(res.data.player_1_decision===res.data.player_2_decision){
-      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null})
+      const res = await axios.put("/api/auth/setwinlose",{id:e.target.name,result:"Manual Review",loser:null,winner:null,createdAt:null,expiresAt:null})
        navigate("/decinfo")
       }else{
         navigate(`/loser/${e.target.name}/player_${e.target.value}`)

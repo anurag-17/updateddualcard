@@ -68,7 +68,6 @@ exports.login = catchAsyncError(
   }
 ) 
 
-
 exports.notification = catchAsyncError(async (req, res, next) => {
   const { playeroneuserid, playertwouserid, playeronename, playertwoname } =
     req.body;
@@ -95,7 +94,6 @@ catchAsyncError(
     next();
   }
   )
-
 
 exports.getdata = 
 catchAsyncError(
@@ -196,11 +194,22 @@ catchAsyncError(
 
 
   exports.playertwoid= catchAsyncError(
-    async (req, res,next) => {
-      const challenge = await Challenge.findByIdAndUpdate(req.body.id,{
+    async(req,res,next)=>{
+      const update = await Challenge.findByIdAndUpdate(req.body.challengerid,{
+        Accept:req.body.Accept,  
         player_2_id:req.body.playertwoid,
-      })
+        player_2:[
+        {
+          images:req.body.playertwo_url,
+          name:req.body.name,
+          text:req.body.text,
+          gamechoice:req.body.gamechoice
+        },
+      ],
+    })
+      return res.status(200).json(update)
     }
+  
   )
 
 
@@ -237,9 +246,9 @@ catchAsyncError(
     )
 
 exports.acceptChallenge = catchAsyncError(
-
   async(req,res,next)=>{
-    const update = await Challenge.findByIdAndUpdate(req.body.challengerid,{Accept:req.body.Accept,  
+    const update = await Challenge.findByIdAndUpdate(req.body.challengerid,{
+      Accept:req.body.Accept,  
       player_2:[
       {
         images:req.body.playertwo_url,
@@ -311,7 +320,8 @@ exports.setwinlose=catchAsyncError(
     winner:req.body.winner,
     loser:req.body.loser,
     result:req.body.result,
-    createdAt:req.body.createdAt
+    createdAt:req.body.createdAt,
+    expiresAt:req.body.expiresAt
   })
     return res.status(200).json(losestatus)
   }
@@ -320,7 +330,7 @@ exports.setwinlose=catchAsyncError(
 exports.setexpire = catchAsyncError(
   async(req,res,next)=>{
     const expiry = await challenge.updateMany(
-      {expiresAt:{$lt:req.body.date}},
+      {expiresAt:{$lt:req.body.date},result:"pending"},
       {$set:{result:"Manual Review"}}
       )
 
