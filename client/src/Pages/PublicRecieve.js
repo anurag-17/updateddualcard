@@ -26,7 +26,7 @@ const [gamechoice,setGameChoice] = useState("")
     image:"",
     userId:""
   })
-  let  acceptchallenge = ""
+  let acceptchallenge = ""
   const [errromessage,setErrorMessage] = useState("")
   const storagedata = JSON.parse(localStorage.getItem("nftuser"))
   const {id} = useParams()
@@ -35,6 +35,7 @@ const [gamechoice,setGameChoice] = useState("")
   const handleClose = () => {
     setShow(false);
   };
+
 
 
   const getallchallenge = async () => {
@@ -69,19 +70,19 @@ const [gamechoice,setGameChoice] = useState("")
               return
         }
         setLoader(true)
+        const newres = await axios.put("/api/auth/setplayertwoid",{id:id,playertwoid:storagedata._id})
         let acceptindex = index
         acceptchallenge = true
-    const res = await axios.put("/api/auth/acceptchallenge",{
-      Accept:acceptchallenge,
-      challengerid:challenge,
-      decline:false,
-      playertwo_url:checkedimage,
-      name:playertwoname,
-      gamechoice:gamechoice,
-      text:text
-    })
+        const res = await axios.put("/api/auth/acceptchallenge",{
+          Accept:acceptchallenge,
+          challengerid:challenge._id,
+          decline:false,
+          playertwo_url:checkedimage,
+          name:storagedata.username,
+          gamechoice:gamechoice,
+          text:text
+        })
     if(res){
-      setLoader(false)
       navigate("/DuelAccepted")
 }
   }
@@ -252,7 +253,23 @@ encodefile(selectedimage[0])
                           }
                         </div>
                       </div>
+                      {
+errromessage&&<div style = {{position:"relative",left:"35%",bottom:"50%"}} className="popup error">
+<div className="message">
+<p>{errromessage}</p>
+</div>
+<div className="action">
+<button onClick={()=>setErrorMessage("")}>Ok</button>
+</div>
+</div>
+}
+                      <div className="btn-duel-right">
+                    <button onClick={handleShow} className="hero-btn">SELECT CARDS</button>
+                  </div>
+                      {/* <span style = {{color:"red"}}>{errromessage}</span> */}
                     </div>
+
+              
                     <div className='col-md-6 col-sm-6'>
                       <div className='dule-rt-2'>
                         <div class="clearfix">
@@ -264,11 +281,28 @@ encodefile(selectedimage[0])
                       </div>
                       <div className='duel-form'>
                         <div class="mb-3 mt-4">
-                          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write your terms" rows="10"></textarea>
+                          <textarea onChange={(e)=>setText(e.target.value)} class="form-control" id="exampleFormControlTextarea1" placeholder="Write your terms" rows="10"></textarea>
                         </div>
                       </div>
+
+                      <div className="search-bar">
+                                  <div className="input-group md-form form-sm form-2 pl-0">
+                                    <input
+                                      type="text"
+                                      required
+                                      className="form-control my-0 py-1 red-border"
+                                      placeholder="Game Of Choice"
+                                      aria-label="Search"
+                                      onChange={(e) =>
+                                        setGameChoice(e.target.value)
+                                      }
+                                    />
+
+                                    <div className="input-group-append"></div>
+                                  </div>
+                                </div>
                       <div className='btn-duel-right'>
-                      <button onClick={()=>AcceptChallenge(index)} className="hero-btn">Accept challenge</button>
+                      <button onClick={AcceptChallenge} className="hero-btn">Accept challenge</button>
                         <button
                           // onClick={DeclineChallenge} 
                           className="hero-btn">Decline challenge</button>

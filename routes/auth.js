@@ -1,13 +1,15 @@
 const express = require("express");
+
 const router = express.Router();
 
-const{ register, login,getdata, getuserdata,sendchallange, getchallenge, getrecieved, acceptChallenge, challengeStatus, declineChallenge, getwinner, setwinner, countwinlose,updateimage,setwinlose, setexpire, addwinimage, addchallenge, addloseimage, getallchallenge, notification, winning, losing, publicchallenge, populating}= require('../controllers/auth');
+const{ register, login,getdata, getuserdata,sendchallange, getchallenge, getrecieved, acceptChallenge, challengeStatus, declineChallenge, getwinner, setwinner, countwinlose,updateimage,setwinlose, setexpire, addwinimage, addchallenge, addloseimage, getallchallenge, notification, winning, losing, publicchallenge, populating, playertwoid}= require('../controllers/auth');
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/getdata").post(getdata)
 router.route("/getuserdata").post(getuserdata)
 router.route("/sendchal").post(sendchallange,notification)
 router.route("/publicchallenge").post(publicchallenge)
+router.route("/setplayertwoid").put(playertwoid)
 router.route("/challengedata").post(getchallenge)
 router.route("/recievedchallenge").post(getrecieved)
 router.route("/acceptChallenge").put(acceptChallenge)

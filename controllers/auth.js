@@ -166,20 +166,40 @@ catchAsyncError(
         recieved:req.body.recieved,
         player_1_id:req.body.playeroneuserid,
         category:"public",
+        player_2_id:req.body.playertwouserid,
         accept,
         decline,
         player_1: [
           {
             text: req.body.playeronetext,
             images:req.body.playerone_url,
-            userId:req.body.playeroneuserid,
             name:req.body.playeronename,
+            userId:req.body.playeroneuserid,
             link:req.body.playeronelink,
+            gamechoice:req.body.gamechoice
+          },
+        ],
+        player_2: [
+          {
+            text: req.body.playertwotext,
+            images:req.body.playertwo_url,
+            userId:req.body.playertwouserid,
+            name:req.body.playertwoname,
+            link:req.body.playertwolink,
             gamechoice:req.body.gamechoice
           },
         ],
       });
       return res.json(challenge)
+    }
+  )
+
+
+  exports.playertwoid= catchAsyncError(
+    async (req, res,next) => {
+      const challenge = await Challenge.findByIdAndUpdate(req.body.id,{
+        player_2_id:req.body.playertwoid,
+      })
     }
   )
 
