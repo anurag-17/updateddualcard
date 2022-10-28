@@ -154,7 +154,6 @@ const DuelSomeone = () => {
     },2200);
   };
 
-  console.log(gamechoice)
   const sendValue = async (e) => {
     e.preventDefault();
     setinter(true)
@@ -284,7 +283,7 @@ const DuelSomeone = () => {
                   <ul className="nav nav-tabs" id="myTab" role="tablist">
                       {searchfilter.map((items, index) => {
                         return (
-                          <li className="nav-item" role="presentation">
+                          <li key={index} className="nav-item" role="presentation">
                             <button
                               value={items.username}
                               onClick={handleuserclick}

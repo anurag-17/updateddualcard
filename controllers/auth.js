@@ -118,7 +118,6 @@ catchAsyncError(
 isRead:1
       }
       )
-
     let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
     let notification = {
       notificationlist:userdata,
@@ -130,7 +129,6 @@ isRead:1
 
 exports.isAuthuser =
 catchAsyncError(
-  
   async (req, res, next) => {
     const { token } = req.cookies;
     if (!token) {
