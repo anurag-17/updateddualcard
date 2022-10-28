@@ -107,11 +107,13 @@ catchAsyncError(
     
     let publicchallenge = await Notifications.find({playeroneuserid:{$ne:req.body.id},type:"public",seenBy:{$nin:req.body.arr}}).count()
     let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
-
+  
     let notification = {
       notificationlist:userdata.concat(userdata1),
       notificationcount:notificationcount+publicchallenge,
     }
+    //console.log(notification.notificationlist);
+ 
     return res.status(200).json(notification);
   }
 )
@@ -121,24 +123,18 @@ catchAsyncError(
   async(req, res,next) => {
     let userdata;
     console.log(req.body.arr);
-    let checkseenby = await Notifications.find({seenBy:{$in:req.body.arr}}).count();
-    console.log(checkseenby)
-    if(checkseenby){
-      userdata = await Notifications.updateMany(
-        {$or:[
-          {playeroneuserid:req.body.id},  
-          {type:'public'}
-          ],
-          isRead:1
-    })
-    } else {
-     userdata = await Notifications.updateMany(
-        {playertwouserid:req.body.id},
+
+     userdata = await Notifications.updateOne(
+      {$or:[
+        {playertwouserid:req.body.id},  
+        {type:'public'}
+        ]
+      },
           {$push:{
             seenBy:req.body.id
           }, isRead:1}
         )
-    }
+    
    
     let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
     let notification = {

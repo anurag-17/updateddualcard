@@ -41,11 +41,9 @@ setTimeout(async()=>{
       if(res){
          
       setPublicChallenge(res.data.publicchallenge)
-      setNotification(res.data.notificationlist.filter((items,index)=>{
-        return items.isRead ===0
-      }))
+      setNotification(res.data.notificationlist)
 
-      setCount(notification.length)   
+        setCount(res.data.notificationcount)   
       }
     }
  
