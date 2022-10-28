@@ -8,7 +8,6 @@ import Header from "./component/Header"
 import Footer from "./component/Footer"
 import BuyDuelCard from "./Pages/BuyDuelCard"
 import DuelSomeone from './component/DuelSomeone';
-import ICOInformation from "./Pages/ICOInformation"
 import Marketplace from "./Pages/Marketplace"
 import DuelReceived from "./component/DuelReceived"
 import DuelAccepted from "./component/DuelAccepted"
@@ -26,7 +25,7 @@ import Pathtolevel from './Pages/Pathtolevel';
 import { Loser } from './Pages/Loser';
 import Duelsystem from './component/Duelsystem';
 import { Decisioninfo } from './component/Decisioninfo';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import axios from 'axios';
 import { CardGallery } from './Pages/CardGallery';
 import { Admin } from './Admin/Admin';
@@ -36,12 +35,9 @@ import { Challengedetails } from './Admin/Challengedetails';
 // import { AdminLogin } from './Admin/AdminLogin';
 
 function App(){
-const allid = []
-const [newid, setnewid] = useState([])
-const [challengedata,setChallengeData] = useState([])
 
   const getexpire = async()=>{
-    const res = await axios.put("/api/auth/setexpire",{date:Date.now()})
+   await axios.put("/api/auth/setexpire",{date:Date.now()})
   }
 
   

@@ -5,12 +5,9 @@ import Container from 'react-bootstrap/Container';
 import { Nav } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
 import logo from "../images/Logo.png"
-import tabicon from "../images/tabicon-14.png"
 import Badge from '@material-ui/core/Badge';
 import Notifications from "@material-ui/icons/Notifications";
 import axios from 'axios'
-
-
 
 const Header = () => {
 const navigate  = useNavigate()
@@ -32,7 +29,7 @@ const handleclick  = async()=>{
 setToggle(!toggle)
 
 setTimeout(async()=>{
-   const res = await axios.put("/api/auth/updatenotification",{id:data._id})
+   await axios.put("/api/auth/updatenotification",{id:data._id})
 },[8000])
 }
      window.addEventListener('scroll', changeNavbarColor);
@@ -64,7 +61,7 @@ const logoutuser = () => {
          <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
                 <Link className="" to = "/">
-                    <img src={logo}/>
+                    <img alt="logo" src={logo}/>
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -216,7 +213,7 @@ const logoutuser = () => {
         <Navbar key={expand}  expand={expand}>
           <Container fluid>
             <Link to="/">
-            <img src={logo}></img>
+            <img alt = "logo" src={logo}></img>
             </Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas

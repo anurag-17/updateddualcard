@@ -39,8 +39,6 @@ const [losing,setlosing] = useState("")
 const [text,setText] = useState("")
 const [gamechoice,setGameChoice] = useState("")
 let  acceptchallenge = ""
-const user = storagedata.username
-
 
   const id=storagedata._id;
   
@@ -62,9 +60,11 @@ const user = storagedata.username
       setplayeronename(items.player_1[0].name)
       setplayeroneId(items.player_1_id)
       setplayertwoId(items.player_2_id)
+
     })
     setchallengedata(res.data);
   };
+
 
   const encodefile = (file)=>{
     var reader = new FileReader()
@@ -148,7 +148,6 @@ const user = storagedata.username
     }
      
       }
-
       const countwinlose = async () => {
         const res = await axios.post("/api/auth/countwinlose",{user:storagedata._id});
         let winfiltered = res.data.filter((items, index) => {
@@ -166,7 +165,6 @@ const getimages = async()=>{
     });
   }
 
-  
   useEffect(() => {
     getimages();
     getrecieved();
