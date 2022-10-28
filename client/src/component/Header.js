@@ -13,8 +13,10 @@ const Header = () => {
 const navigate  = useNavigate()
 const [colorChange, setColorchange] = useState(false);
 const [notification,setNotification] = useState([])
+const [publicchallenge,setPublicChallenge] = useState([])
 const [count,setCount] = useState("")
 const [toggle,setToggle] = useState(false)
+const [combine,setCombine] = useState(notification)
 const data = JSON.parse(localStorage.getItem("nftuser"))
 
 const changeNavbarColor = () =>{
@@ -29,23 +31,24 @@ const handleclick  = async()=>{
 setToggle(!toggle)
 
 setTimeout(async()=>{
-   await axios.put("/api/auth/updatenotification",{id:data._id})
-},[8000])
+   await axios.put("/api/auth/updatenotification",{id:data._id,arr:[data._id]})
+},[5000])
 }
      window.addEventListener('scroll', changeNavbarColor);
 
      const getnotification = async()=>{
-      const res = await axios.post("/api/auth/getusernotification",{id:data._id})
+      const res = await axios.post("/api/auth/getusernotification",{id:data._id,arr:[data._id]})
       if(res){
-        setCount(res.data.notificationcount)
-    setNotification(res.data.notificationlist.filter((items,index)=>{
-      return items.isRead === 0
-     })) 
-      // setNotification(notificationda
-      }
-      
-     }
+         
+      setPublicChallenge(res.data.publicchallenge)
+      setNotification(res.data.notificationlist.filter((items,index)=>{
+        return items.isRead ===0
+      }))
 
+      setCount(notification.length)   
+      }
+    }
+ 
      useEffect(()=>{
       getnotification()
      },[count,notification])
@@ -119,10 +122,7 @@ const logoutuser = () => {
                             <Link to="/challengemarketplace" className="dropdown-item">Challenge Marketplace</Link>
                           </li>                                   
                         </ul>
-                    </li> 
-
-    
-                                                                   
+                    </li>                                                    
                 </ul>
                 <form style={{position:"relative",right:"12%"}} className="d-flex">  
                 {
@@ -154,10 +154,10 @@ const logoutuser = () => {
       </Badge>
     </div>
                         </Link>
-                        <ul style={{backgroundColor:"#3C2485",textAlign:"center",color:"white"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                        <ul style={{backgroundColor:"#3C2485",textAlign:"left",color:"white",padding:"2px"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+               <li style = {{color:"#717bff"}}>challenge notification</li>
                           {
                             notification.map((items,index)=>{
-                              
                               return(
                                 <React.Fragment key = {index}>
                                 {
@@ -168,32 +168,11 @@ const logoutuser = () => {
                               )
                             })
                           }
+
                         </ul>
                     </li>
 
-                    {/* <li style ={{position:"relative",top:"12%"}} className="nav-item dropdown">
-     <div className="nav-item dropdown" style={{color:"#8d8ddf",padding:15,position:"relative",top:"12%"}}>
-      <Badge badgeContent={count} 
-      color="primary">
-        <Notifications style = {{cursor:"pointer"}} onClick={handleclick}/>
-      </Badge>
-    </div>
-    {
-      
-    <div  style={{backgroundColor:"#3C2485"}} className={toggle?"card-visible":"card-display"}>
-      {
-        notification.map((items,index)=>{
-          return(
-
-      <div className="card-body">
-        <p>{items.messages}</p>
-      </div>
-          )
-        })
-      }
-    </div>
-    }
-        </li> */}
+                   
                     <>
                     </>
                     </div>

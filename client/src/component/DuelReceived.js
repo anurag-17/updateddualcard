@@ -41,7 +41,6 @@ const [gamechoice,setGameChoice] = useState("")
 let  acceptchallenge = ""
 
   const id=storagedata._id;
-  
   setTimeout(()=>{
     setLoader(false)
     },2000)
@@ -50,7 +49,7 @@ let  acceptchallenge = ""
       setShow(false);
     };
 
-    const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true);
 
   const getrecieved = async()=>{
     const res = await axios.post("/api/auth/recievedchallenge",{id:id,Accept:"pending",result:"pending"});
