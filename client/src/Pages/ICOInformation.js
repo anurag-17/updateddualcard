@@ -1,6 +1,5 @@
 import React from 'react';
 import './Icoinfo.css';
-import ListGroup from 'react-bootstrap/ListGroup';
 
 const ICOInformation = () => {
   return (

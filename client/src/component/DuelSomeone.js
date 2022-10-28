@@ -11,7 +11,7 @@ import "../Pages/tickimage.css";
 import { useAlert } from "react-alert";
 import Resizer from "react-image-file-resizer";
 import { Searchbar } from "./Searchbar";
-import { Usernames } from "./tab/Usernames";
+// import { Usernames } from "./tab/Usernames";
 
 
 const DuelSomeone = () => {
@@ -68,6 +68,7 @@ const DuelSomeone = () => {
       }
     });
   }
+
 
   const handleClose = () => {
     setShow(false);
@@ -276,7 +277,6 @@ const DuelSomeone = () => {
                 </h4>
               </Link>
             </div>
-
               <div style={{marginTop:"50px"}} className="row">
                 <div className="tab-challange">
                   <div className="tab-section">
