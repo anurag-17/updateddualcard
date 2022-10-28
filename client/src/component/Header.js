@@ -35,7 +35,6 @@ setTimeout(async()=>{
    const res = await axios.put("/api/auth/updatenotification",{id:data._id})
 },[8000])
 }
-console.log(toggle)
      window.addEventListener('scroll', changeNavbarColor);
 
      const getnotification = async()=>{
@@ -52,7 +51,7 @@ console.log(toggle)
 
      useEffect(()=>{
       getnotification()
-     })
+     },[count,notification])
 
 const logoutuser = () => {
   localStorage.removeItem("nftuser");
@@ -152,7 +151,7 @@ const logoutuser = () => {
                     <li style = {{position:"relative",bottom:'20%'}} className="nav-item dropdown">
                         <Link className="nav-link dropdown-toggle nav-drop display" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div className="nav-item dropdown" style={{color:"#8d8ddf",position:"relative"}}>
-      <Badge badgeContent={count} 
+      <Badge overlap="rectangular" badgeContent={count} 
       color="primary">
         <Notifications style = {{cursor:"pointer"}} onClick={handleclick}/>
       </Badge>
@@ -161,10 +160,14 @@ const logoutuser = () => {
                         <ul style={{backgroundColor:"#3C2485",textAlign:"center",color:"white"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                           {
                             notification.map((items,index)=>{
+                              
                               return(
-                                <>
-                              <li>{items.messages}</li>
-                              </>
+                                <React.Fragment key = {index}>
+                                {
+                                 items.type==="recieved"?<Link  to = "/DuelReceived"><li>{items.messages}</li></Link>:items.type==="Accepted"?<Link to = "/DuelAccepted"><li>{items.messages}</li></Link>:<li>{items.messages}</li>
+                                }
+                          
+                              </React.Fragment>
                               )
                             })
                           }
