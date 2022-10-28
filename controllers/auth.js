@@ -254,6 +254,8 @@ catchAsyncError(
         },
       ],
     })
+  notification(req.body.playertwoid, req.body.playeroneid, req.body.name,req.body.playeronename,`${req.body.name} Accepted your challenge`,"Accepted")
+
       return res.status(200).json(update)
     }
   
