@@ -158,7 +158,7 @@ const DuelSomeone = () => {
   const sendValue = async (e) => {
     e.preventDefault();
     setinter(true)
-    setLoader(true);
+    setLoader(true)
     if (checkedimage.length <= 0) {
       setErrorMessage("please select cards");
       setTimeout(() => {

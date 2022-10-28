@@ -34,7 +34,7 @@ export const DuelStatus = () => {
           <Loader/>
         ):(
           <div className="duelstatus-sec">
-            <div className="container">
+            <div style={{marginTop:"25px"}} className="container">
               <div className="user-title">
                 <h1>{data.username}</h1>
               </div>

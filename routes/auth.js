@@ -26,7 +26,6 @@ router.route("/winning").put(winning)
 router.route("/losing").put(losing)
 router.route("/addchallenge").put(addchallenge)
 router.route("/updatenotification").put(updatenotificationstatus)
-
 router.route("/getusernotification").post(getusernotification)
 router.route("/getallchallenge").get(getallchallenge)
 router.route("/populate").get(populating)

@@ -9,6 +9,7 @@ import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { postimage } from '../actions/apiAction';
 
+
 export const PublicRecieve = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ export const PublicRecieve = () => {
   const [loader, setLoader] = useState(true)
   const [checkedimage, setcheckedimage] = useState([]);
   const [text,setText] = useState("")
-const [gamechoice,setGameChoice] = useState("")
+  const [gamechoice,setGameChoice] = useState("")
   const [data,setdata] = useState({
     image:"",
     userId:""

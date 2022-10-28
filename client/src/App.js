@@ -32,7 +32,7 @@ import { Admin } from './Admin/Admin';
 import { PublicChallenge } from './Pages/PublicChallenge';
 import { PublicRecieve } from './Pages/PublicRecieve';
 import { Challengedetails } from './Admin/Challengedetails';
-// import { AdminLogin } from './Admin/AdminLogin';
+
 
 function App(){
 
