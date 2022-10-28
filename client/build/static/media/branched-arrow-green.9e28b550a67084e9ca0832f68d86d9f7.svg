@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="832.998" height="194" viewBox="0 0 832.998 194">
+  <g id="Group_734" data-name="Group 734" transform="translate(-267.001 -688)">
+    <g id="L1" transform="translate(-159 -2308)">
+      <g id="Arrow" transform="translate(3597.001 2812) rotate(90)">
+        <path id="Path_209" data-name="Path 209" d="M.331.336a1.112,1.112,0,0,1,1.592,0L8.67,7.191a1.156,1.156,0,0,1,0,1.618L1.923,15.665a1.113,1.113,0,0,1-1.592,0,1.157,1.157,0,0,1,0-1.618L6.283,8,2.738,4.4.33,1.953A1.156,1.156,0,0,1,.33.335Z" transform="translate(369 3155)" fill="#00c853" fill-rule="evenodd"/>
+        <g id="Ellipse_1393" data-name="Ellipse 1393" transform="translate(308 3159)" fill="none" stroke="#00c853" stroke-width="2">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3" fill="none"/>
+        </g>
+        <line id="Line_25" data-name="Line 25" x2="49.678" transform="translate(319.822 3163)" fill="none" stroke="#00c853" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Arrow-2" data-name="Arrow" transform="translate(4005.001 2812) rotate(90)">
+        <path id="Path_209-2" data-name="Path 209" d="M.331.336a1.112,1.112,0,0,1,1.592,0L8.67,7.191a1.156,1.156,0,0,1,0,1.618L1.923,15.665a1.113,1.113,0,0,1-1.592,0,1.157,1.157,0,0,1,0-1.618L6.283,8,2.738,4.4.33,1.953A1.156,1.156,0,0,1,.33.335Z" transform="translate(369 3155)" fill="#00c853" fill-rule="evenodd"/>
+        <g id="Ellipse_1393-2" data-name="Ellipse 1393" transform="translate(308 3159)" fill="none" stroke="#00c853" stroke-width="2">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3" fill="none"/>
+        </g>
+        <line id="Line_25-2" data-name="Line 25" x2="49.678" transform="translate(319.822 3163)" fill="none" stroke="#00c853" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Arrow-3" data-name="Arrow" transform="translate(4006 2688) rotate(90)">
+        <path id="Path_209-3" data-name="Path 209" d="M.331.336a1.112,1.112,0,0,1,1.592,0L8.67,7.191a1.156,1.156,0,0,1,0,1.618L1.923,15.665a1.113,1.113,0,0,1-1.592,0,1.157,1.157,0,0,1,0-1.618L6.283,8,2.738,4.4.33,1.953A1.156,1.156,0,0,1,.33.335Z" transform="translate(414 3155)" fill="#00c853" fill-rule="evenodd"/>
+        <g id="Ellipse_1393-3" data-name="Ellipse 1393" transform="translate(308 3159)" fill="none" stroke="#00c853" stroke-width="2">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3" fill="none"/>
+        </g>
+        <line id="Line_25-3" data-name="Line 25" x2="94.322" transform="translate(319.5 3163)" fill="none" stroke="#00c853" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Arrow-4" data-name="Arrow" transform="translate(4413.999 2812) rotate(90)">
+        <path id="Path_209-4" data-name="Path 209" d="M.331.336a1.112,1.112,0,0,1,1.592,0L8.67,7.191a1.156,1.156,0,0,1,0,1.618L1.923,15.665a1.113,1.113,0,0,1-1.592,0,1.157,1.157,0,0,1,0-1.618L6.283,8,2.738,4.4.33,1.953A1.156,1.156,0,0,1,.33.335Z" transform="translate(369 3155)" fill="#00c853" fill-rule="evenodd"/>
+        <g id="Ellipse_1393-4" data-name="Ellipse 1393" transform="translate(308 3159)" fill="none" stroke="#00c853" stroke-width="2">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3" fill="none"/>
+        </g>
+        <line id="Line_25-4" data-name="Line 25" x2="49.678" transform="translate(319.822 3163)" fill="none" stroke="#00c853" stroke-linecap="round" stroke-width="2"/>
+      </g>
+    </g>
+    <rect id="Rectangle_120" data-name="Rectangle 120" width="390" height="2" rx="1" transform="translate(284 815)" fill="#00c853"/>
+    <rect id="Rectangle_121" data-name="Rectangle 121" width="390" height="2" rx="1" transform="translate(692 815)" fill="#00c853"/>
+  </g>
+</svg>
