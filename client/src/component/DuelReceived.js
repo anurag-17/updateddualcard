@@ -157,7 +157,6 @@ let  acceptchallenge = ""
         setlosing(res.data.length - winfiltered.length);
       };
     
-
 const getimages = async()=>{
   let user = JSON.parse(localStorage.getItem("nftuser"))
     const res = await axios.post("/api/auth/getdata",user).then((data) => {

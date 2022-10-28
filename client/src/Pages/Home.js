@@ -8,7 +8,6 @@ import img2 from "../Edited/2.png"
 import img3 from "../Edited/3.png"
 import mainimg from "../Edited/Group1.png"
 
-
 const Home = () => {
   const [userdata, setUserdata] = useState([]);
   const [newuserdata, setnewuserdata] = useState([]);
@@ -18,8 +17,7 @@ const Home = () => {
   const [firstname,setfirstname] = useState(true)
   const [runfun,setrunfun] = useState(true)
   const data = JSON.parse(localStorage.getItem("nftuser"));
-
-
+  
   async function getuserdata(){
     const res = await axios.get("/api/auth/getuserdata");
     setUserdata(res.data);
