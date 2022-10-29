@@ -60,7 +60,9 @@ type:String
             type:Array,
             required: true,  
         },
-        
+        avatar:{
+          type:String,
+        },
       userId: {
         type: String,
       },

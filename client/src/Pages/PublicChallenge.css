@@ -8,6 +8,7 @@
 
 .border-none td{
     border: none;
+    vertical-align: middle;
 }
 .border-none th{
     border: none;
