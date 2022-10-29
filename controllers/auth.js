@@ -238,7 +238,8 @@ catchAsyncError(
             name:req.body.playeronename,
             userId:req.body.playeroneuserid,
             link:req.body.playeronelink,
-            gamechoice:req.body.gamechoice
+            gamechoice:req.body.gamechoice,
+            avatar:req.body.playeroneavatar
           },
         ],
         player_2: [

@@ -103,8 +103,7 @@ const Home = () => {
               <p>Purchase a Level 1 DuelCard and start challenging other players for a chance to win their NFTs!</p>
             </div>
             <div className='video-section'>           
-            <iframe width="1120" height="630" src="https://www.youtube.com/embed/L6dYyye5a2M" title="DuelCards VO Synced02" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            </div>
+            <iframe width="1120" height="630" src="https://www.youtube.com/embed/_yCktFYy100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>            </div>
           </div>
         </div>
 
