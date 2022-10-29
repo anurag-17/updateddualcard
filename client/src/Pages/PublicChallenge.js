@@ -5,6 +5,7 @@ import "./PublicChallenge.css"
 
 export const PublicChallenge = () => {
 const [allchallenge,setAllChallenge] = useState([])
+const [userdata,setuserdata] = useState([])
 
 const data = JSON.parse(localStorage.getItem("nftuser"))
 const navigate = useNavigate()
@@ -20,16 +21,23 @@ const getallchallenge = async()=>{
   }
 }
 
+const getuserdata = async () => {
+  const res = await axios.post("/api/auth/getuserdata");
+  setuserdata(res.data)
+
+}
+
 useEffect(()=>{
 getallchallenge()
+getuserdata()
 },[])
 
   return (
  <div style = {{height:"100vh"}} className='container'>
  <div className="public-container">
- <table className='table table-bordered table-top'>
+ <table className='table table-striped'>
 <thead>
-<tr style = {{color:"white"}}>
+<tr  className='border-none' style = {{color:"white"}}>
     <th>Username</th>
     <th>Twitch/Youtube</th>
     <th>Game of Choice</th>
@@ -43,14 +51,22 @@ getallchallenge()
     allchallenge.map((items,index)=>{
       console.log(items._id)
     return(
-  <tr style = {{"cursor":"pointer"}} onClick={()=>{navigate(`/publicRecieve/${items._id}`)}}>
-  <td>{items.player_1[0].name}</td>
+  <tr className="border-none" style = {{"cursor":"pointer",border:"none"}} onClick={()=>{navigate(`/publicRecieve/${items._id}`)}}>
+
+  <td>
+    {/* {userdata.map((items,index)=>{
+    console.log(items)
+    return(
+      <img src  = {items.avatar}/>
+    )
+  })} */}
+  {items.player_1[0].name}</td>
   <td>{items.player_1[0].link}</td>
   <td>{items.player_1[0].gamechoice}</td>
   <td>{items.player_1[0].text}</td>
-  <th>
+  <td>
 <button style = {{color:"white"}} className='table-hero-btn'>Accept Challenge</button>
-    </th>
+    </td>
   </tr>
     )
     })
