@@ -5,3 +5,17 @@
 .tabel-top{
     position: relative;
 }
+
+.border-none td{
+    border: none;
+}
+.border-none th{
+    border: none;
+}
+.border-none{
+    border: none;
+}
+
+.border-none{
+    background-color: #3C2485 ;
+}

@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import { useSelector } from "react-redux";
 
+
 const Header = () => {
 const {isAuthenticated,user,error,loading} = useSelector((state)=>state.user)
 const navigate  = useNavigate()
@@ -32,8 +33,6 @@ const changeNavbarColor = () =>{
   }
 };
 
-
-
 const updatenotification  = async()=>{
 setToggle(!toggle)
    await axios.put("/api/auth/updatenotification",{id:data._id,arr:[data._id]})
@@ -42,10 +41,8 @@ setToggle(!toggle)
      const getnotification = async()=>{
       const res = await axios.post("/api/auth/getusernotification",{id:data._id,arr:[data._id]})
       if(res){
-      setPublicChallenge(res.data.publicchallenge)
-      if(res.data.notificationlist>0){
-        setInter(true)
-      }
+      // setPublicChallenge(res.data.publicchallenge)
+    
       setNotification(res.data.notificationlist.filter((items,index)=>{
         return(
           items.playeroneuserid !==data._id
@@ -56,19 +53,17 @@ setToggle(!toggle)
     }
 
 const Messagedisplay = ()=>{
-if(data){
   const note = notification.map((items,index)=>{
-    toastnotification( <div style = {{color:"white"}}>{items.messages}</div>)
+    toastnotification( <div style = {{color:"white"}}>{items.messages}</div>,items._id)
   })
-  return note
-}
     }
 
-const toastnotification  = (notes)=>{
+const toastnotification  = (notes,id)=>{
   console.log(notes)
   toast.info(notes,{
     position: "top-center",
     // autoClose: 5000,
+    toastId:id,
     hideProgressBar: false,
     onClose:() => updatenotification(),
     closeOnClick: true,
@@ -81,10 +76,10 @@ const toastnotification  = (notes)=>{
 }
 
      useEffect(()=>{
-        Messagedisplay()
-     },[count,isAuthenticated,loading,user])
-
-     useEffect(()=>{
+      Messagedisplay()
+    },[notification])
+    
+    useEffect(()=>{
         getnotification()
      },[count,notification])
 
@@ -93,7 +88,8 @@ const logoutuser = () => {
   navigate("/register");
 };
 
-  return (<div className={colorChange ? 'navbar colorChange' : 'navbar'}>
+  return (
+  <div className={colorChange ? 'navbar colorChange' : 'navbar'}>
         <div className='container-fluid topheader desktop-nav fixed-top'>
         <div className='container'>
          <nav className="navbar navbar-expand-lg navbar-light">
