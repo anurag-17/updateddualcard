@@ -40,23 +40,7 @@ function App(){
    await axios.put("/api/auth/setexpire",{date:Date.now()})
   }
 
-  
-//      const getrecieved=async()=>{
-//     const newres = await axios.post("/api/auth/challengestatus",{
-//       id:id,  
-//       Accept:"pending",
-//       result:"pending"
-//     });
-    
-//     if(newres){
-//       setChallengeData(newres.data)
-//       newres.data.map((items,index)=>{
-//       allid.push(items._id)
-//       setnewid(allid)
-//       const res =  axios.put("/api/auth/addchallenge",{arr:allid,challenges:newres.data})
-//     })
-//   }
-// };
+
 
 
   useEffect(()=>{
