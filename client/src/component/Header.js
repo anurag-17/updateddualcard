@@ -7,16 +7,20 @@ import { Navbar } from "react-bootstrap";
 import logo from "../images/Logo.png"
 import Badge from '@material-ui/core/Badge';
 import Notifications from "@material-ui/icons/Notifications";
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
+import { useSelector } from "react-redux";
 
 const Header = () => {
+const {isAuthenticated,user,error,loading} = useSelector((state)=>state.user)
 const navigate  = useNavigate()
 const [colorChange, setColorchange] = useState(false);
 const [notification,setNotification] = useState([])
 const [publicchallenge,setPublicChallenge] = useState([])
 const [count,setCount] = useState("")
 const [toggle,setToggle] = useState(false)
-const [combine,setCombine] = useState(notification)
+const [inter,setInter] = useState(false)
 const data = JSON.parse(localStorage.getItem("nftuser"))
 
 const changeNavbarColor = () =>{
@@ -27,27 +31,61 @@ const changeNavbarColor = () =>{
     setColorchange(false);
   }
 };
-const handleclick  = async()=>{
+
+
+
+const updatenotification  = async()=>{
 setToggle(!toggle)
-
    await axios.put("/api/auth/updatenotification",{id:data._id,arr:[data._id]})
-
 }
      window.addEventListener('scroll', changeNavbarColor);
-
      const getnotification = async()=>{
       const res = await axios.post("/api/auth/getusernotification",{id:data._id,arr:[data._id]})
       if(res){
-         
       setPublicChallenge(res.data.publicchallenge)
-      setNotification(res.data.notificationlist)
-
-        setCount(res.data.notificationcount)   
+      if(res.data.notificationlist>0){
+        setInter(true)
+      }
+      setNotification(res.data.notificationlist.filter((items,index)=>{
+        return(
+          items.playeroneuserid !==data._id
+        )
+      }))
+        setCount(res.data.notificationcount)  
       }
     }
 
+const Messagedisplay = ()=>{
+if(data){
+  const note = notification.map((items,index)=>{
+    toastnotification( <div style = {{color:"white"}}>{items.messages}</div>)
+  })
+  return note
+}
+    }
+
+const toastnotification  = (notes)=>{
+  console.log(notes)
+  toast.info(notes,{
+    position: "top-center",
+    // autoClose: 5000,
+    hideProgressBar: false,
+    onClose:() => updatenotification(),
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+    });
+  
+}
+
      useEffect(()=>{
-      getnotification()
+        Messagedisplay()
+     },[count,isAuthenticated,loading,user])
+
+     useEffect(()=>{
+        getnotification()
      },[count,notification])
 
 const logoutuser = () => {
@@ -59,6 +97,7 @@ const logoutuser = () => {
         <div className='container-fluid topheader desktop-nav fixed-top'>
         <div className='container'>
          <nav className="navbar navbar-expand-lg navbar-light">
+         <ToastContainer/>
             <div className="container-fluid">
                 <Link className="" to = "/">
                     <img alt="logo" src={logo}/>
@@ -145,10 +184,9 @@ const logoutuser = () => {
                     <li style = {{position:"relative",bottom:'20%'}} className="nav-item dropdown">
                         <Link className="nav-link dropdown-toggle nav-drop display" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div className="nav-item dropdown" style={{color:"#8d8ddf",position:"relative"}}>
-      <Badge overlap="rectangular" badgeContent={count} 
-      color="primary">
-        <Notifications style = {{cursor:"pointer"}} onClick={handleclick}/>
-      </Badge>
+                        <div className="GeeksforGeeks">
+            
+            </div>
     </div>
                         </Link>
                         <ul style={{backgroundColor:"#3C2485",textAlign:"left",color:"white",padding:"2px"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -169,7 +207,6 @@ const logoutuser = () => {
                         </ul>
                     </li>
 
-                   
                     <>
                     </>
                     </div>
