@@ -30,9 +30,8 @@ const changeNavbarColor = () =>{
 const handleclick  = async()=>{
 setToggle(!toggle)
 
-setTimeout(async()=>{
    await axios.put("/api/auth/updatenotification",{id:data._id,arr:[data._id]})
-},[5000])
+
 }
      window.addEventListener('scroll', changeNavbarColor);
 
@@ -46,7 +45,7 @@ setTimeout(async()=>{
         setCount(res.data.notificationcount)   
       }
     }
- 
+
      useEffect(()=>{
       getnotification()
      },[count,notification])
