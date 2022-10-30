@@ -51,27 +51,31 @@ const updatenotification  = async()=>{
       }
     }
 
-const Messagedisplay = ()=>{
-  const note = notification.map((items,index)=>{
+const Messagedisplay = async()=>{
+  const note =  notification.map((items,index)=>{
     toastnotification( <div style = {{color:"white"}}>{items.messages}</div>,items._id)
   })
+
     }
 
-const toastnotification  = (notes,id)=>{
-  console.log(notes)
-  toast.info(notes,{
+const toastnotification  = async(notes,id)=>{
+   toast.info(notes,{
     position: "top-center",
     autoClose: 8000,
     toastId:id,
     hideProgressBar: false,
-    onClose:() => updatenotification(),
+    onClose:async() => await updatenotification(),
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
     theme: "colored"
     });
-  
+    
+    setTimeout(()=>{
+      updatenotification()
+      return
+        },8000)
 }
 
      useEffect(()=>{
