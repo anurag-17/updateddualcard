@@ -34,8 +34,7 @@ const changeNavbarColor = () =>{
 };
 
 const updatenotification  = async()=>{
-setToggle(!toggle)
-   await axios.put("/api/auth/updatenotification",{id:data._id,arr:[data._id]})
+     await axios.put("/api/auth/updatenotification",{id:data._id,arr:[data._id]})
 }
      window.addEventListener('scroll', changeNavbarColor);
      const getnotification = async()=>{
@@ -62,7 +61,7 @@ const toastnotification  = (notes,id)=>{
   console.log(notes)
   toast.info(notes,{
     position: "top-center",
-    // autoClose: 5000,
+    autoClose: 8000,
     toastId:id,
     hideProgressBar: false,
     onClose:() => updatenotification(),
@@ -77,7 +76,7 @@ const toastnotification  = (notes,id)=>{
 
      useEffect(()=>{
       Messagedisplay()
-    },[notification])
+    },[notification,count,isAuthenticated])
     
     useEffect(()=>{
         getnotification()
