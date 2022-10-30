@@ -32,9 +32,14 @@ import { Admin } from './Admin/Admin';
 import { PublicChallenge } from './Pages/PublicChallenge';
 import { PublicRecieve } from './Pages/PublicRecieve';
 import { Challengedetails } from './Admin/Challengedetails';
+import { useDispatch, useSelector } from "react-redux";
+import { loaduser } from './actions/userAction';
 
 
 function App(){
+
+  const dispatch = useDispatch();
+  dispatch(loaduser());
 
   const getexpire = async()=>{
    await axios.put("/api/auth/setexpire",{date:Date.now()})
