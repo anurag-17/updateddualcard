@@ -1,0 +1,22 @@
+.challenge_content{
+    display: flex;
+    width: 100%;
+   
+}
+.challenge-heading{
+    padding-top: 30px;
+}
+.challengetable {
+    width: 80vw;
+}
+.scrolltable{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    
+}
+.aghhaa{
+    --bs-table-bg: rgb(6, 0, 27) ;
+    --bs-table-striped-bg: #0b0b27 ;
+   border-collapse: separate;
+
+}

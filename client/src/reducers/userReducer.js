@@ -18,18 +18,21 @@ import {
   UPDATE_PROFIE_FAIL,
   UPDATE_PROFIE_REQUEST,
   UPDATE_PROFIE_SUCCESS,
+  ADMIN_LOGIN_REQUEST,ADMIN_LOGIN_SUCCESS,ADMIN_LOGIN_FAIL
 } from "../constants/userConstants";
 
 export const userReducer = (state = {}, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
-      return {
+    case ADMIN_LOGIN_REQUEST:
+    return {
         loading: true,
         isAuthenticated: false,
       };
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
+      case ADMIN_LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -38,6 +41,7 @@ export const userReducer = (state = {}, action) => {
       };
     case LOGIN_FAIL:
     case REGISTER_USER_FAIL:
+      case ADMIN_LOGIN_FAIL:
       return {
         ...state,
         loading: false,

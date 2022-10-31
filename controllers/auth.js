@@ -7,7 +7,9 @@ const jwt = require("jsonwebtoken");
 const catchAsyncError = require("../Errorhandlers/catchAsyncError")
 const ErrorHandler = require("../config/errorHandler");
 const challenge = require("../models/challenge");
-const Notifications = require("../models/Notification")
+const Notifications = require("../models/Notification");
+
+const Admin = require("../models/Admin");
 
 
 async function isEmailValid(email) {
@@ -70,6 +72,25 @@ exports.login = catchAsyncError(
       sendToken(user, 200, res);
   }
 ) 
+
+exports.adminlogin = catchAsyncError(
+  async (req, res, next)=>{
+    const {email, password} = req.body
+    if (!email || !password){
+      return next(new ErrorResponse("please provide email&password", 400))
+    }
+    const admin = await Admin.findOne({ email }).select("+password");
+    if(!admin){
+      return res.status(500).json("invalid credentials user not found");
+    }
+    const isMatch = await Admin.findOne({password});
+    if (!isMatch) {
+      return res.status(500).json("password is not valid please register")
+    }
+    console.log(admin)
+    sendToken(admin, 200, res)
+  }
+)
 
 // exports.notification = catchAsyncError(async (req, res, next) => {
 
@@ -609,3 +630,4 @@ const sendToken = (user, statusCode, res) => {
     token,
   });
 };
+

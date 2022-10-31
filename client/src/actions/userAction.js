@@ -17,6 +17,7 @@ import {
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PROFIE_REQUEST,
   UPDATE_PROFIE_SUCCESS,
+  ADMIN_LOGIN_REQUEST,ADMIN_LOGIN_SUCCESS,ADMIN_LOGIN_FAIL
 } from "../constants/userConstants";
 
 
@@ -35,6 +36,21 @@ export const login = (userdata) => async (dispatch) => {
   }
   
 };
+// export const adminlogin = (admindata) =>async(dispatch)=> {
+// try {
+//   console.log(admindata)
+//   dispatch({type:ADMIN_LOGIN_REQUEST});
+//   const {dataA} = await axios.post(`/api/auth/adminlogin`, admindata);
+// console.log(dataA);
+//   dispatch({type: ADMIN_LOGIN_SUCCESS , payload: dataA.user});
+//   localStorage.setItem("nftadmin", JSON.stringify({...dataA.user, password:"", expire: new Date().getDate()+7}))
+// console.log(dataA, "admin");
+// } catch (error) {
+//   dispatch({type: ADMIN_LOGIN_FAIL, payload: error.response.dataA})
+//   console.log(error.response, "adminerror");
+// }
+// }
+
 
 
 export const register = (userData) => async (dispatch) => {

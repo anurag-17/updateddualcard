@@ -65,7 +65,7 @@
     text-align: left;
 }
 .table-main tbody, td, th, thead, tr {
-    border-width: 1px !important;
+    border-width: 1px ;
 
 }
 

@@ -1,9 +1,83 @@
-.challenge-heading{
-    text-align:center;
-    color:"white"
-}
-.challenge-heading h1{
-    font-family:Audiowide,Regular;
-    color:white;
+.challenge-heading {
+    text-align: center;
+    color: "white"
 }
 
+.challenge-heading h1 {
+    font-family: Audiowide, Regular;
+    color: white;
+    margin-bottom: 50px;
+}
+
+
+
+.sideNavbar {
+    height: 100vh;
+   width: 20vw ;
+    background-color: rgb(6, 0, 27);
+
+}
+.navcontent{
+    padding-top: 30px;
+}
+.adt{
+    margin-left: 15px;
+}
+.adt2{
+    margin-left: 13px;
+}
+.adt23{
+    margin-left: 11px;
+}
+.logoutadmin{
+  position: fixed;
+  bottom: 20px;
+  
+}
+.iconA{
+    color: white;
+}
+
+/* .................media start..................... */
+@media (max-width: 950px){
+    .logoimg img{
+        width: 13vw;
+    }
+}
+@media (max-width: 700px) {
+    .iconA{
+        display: none;
+    }
+    .adt,  .adt23{
+        margin-left: 0px;
+    }
+    .adt2{
+        margin-left: 0px;
+        
+    }
+    .logoimg img{
+        width: 13vw;
+    }
+    @media (max-width: 580px) {
+        .logoimg img{
+            width: 13vw;
+        }  
+        .adt, .adt2, .adt23 {
+         font-size: 15px;
+        }
+    }
+    @media (max-width: 490px) {
+        .logoimg img{
+            display: none;
+        }  
+        .adt, .adt2 , .adt23{
+         font-size: 10px;
+        }
+    }
+    @media (max-width: 375px) {
+       
+        .adt, .adt2 , .adt23{
+         font-size: 8px;
+        }
+    }
+}

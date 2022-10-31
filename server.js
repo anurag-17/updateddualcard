@@ -77,6 +77,32 @@ app.get("/getuser",async(req,res,next)=>{
   return res.json(user)
 })
 
+function verifytoken(req, res, next) {
+  let token = req.query[0];
+  console.log(token);
+  if (token != undefined) {
+      let Rtoken = token.replaceAll('"', "");
+
+      jwt.verify(Rtoken, process.env.JWT_SECRET, (error, authdata) => {
+          if (error) {
+              res.status(403)
+          }
+          else {
+              console.log(authdata);
+          } next();
+      });
+  }
+  else {
+      res.json({ message: "error" });
+
+  }
+}
+
+app.post("/adminin",verifytoken,async(req,res,next)=>{
+  res.json({
+    message: "welcome admin"
+})
+})
 // app.post("/deleteuser",async(req,res)=>{
 //   const user = await Challenge.deleteMany()
 //   return res.json(user)
