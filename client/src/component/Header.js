@@ -21,7 +21,8 @@ const [notification,setNotification] = useState([])
 const [publicchallenge,setPublicChallenge] = useState([])
 const [count,setCount] = useState("")
 const [toggle,setToggle] = useState(false)
-const [inter,setInter] = useState(false)
+const [allnotification,setallnotification] = useState([])
+const [winlose,setWinlose]  = useState([])
 const data = JSON.parse(localStorage.getItem("nftuser"))
 
 const changeNavbarColor = () =>{
@@ -39,29 +40,31 @@ const updatenotification  = async()=>{
      window.addEventListener('scroll', changeNavbarColor);
      const getnotification = async()=>{
       const res = await axios.post("/api/auth/getusernotification",{id:data._id,arr:[data._id]})
-      if(res){
-      // setPublicChallenge(res.data.publicchallenge)
-    
-      setNotification(res.data.notificationlist.filter((items,index)=>{
-        return(
-          items.playeroneuserid !==data._id
-        )
-      }))
+  
+      if(res.data&&res.data){
+        setallnotification(res.data.allnotifications)            
+         setNotification(res.data.notificationlist)
+    // setWinlose(res.data.notificationlist.filter((items,index)=>{
+    //   return(
+    //     items.type==="winlose"
+    //   )
+    // }))
         setCount(res.data.notificationcount)  
       }
     }
 
+    
 const Messagedisplay = async()=>{
   const note =  notification.map((items,index)=>{
     toastnotification( <div style = {{color:"white"}}>{items.messages}</div>,items._id)
   })
 
     }
-
+console.log(allnotification)
 const toastnotification  = async(notes,id)=>{
    toast.info(notes,{
     position: "top-center",
-    autoClose: 8000,
+    autoClose: 5000,
     toastId:id,
     hideProgressBar: false,
     onClose:async() => await updatenotification(),
@@ -71,13 +74,11 @@ const toastnotification  = async(notes,id)=>{
     progress: undefined,
     theme: "colored"
     });
-    
-    setTimeout(()=>{
-      updatenotification()
-      return
-        },8000)
+    // setTimeout(()=>{
+    //   updatenotification()
+    //   return
+    //     },5000)
 }
-
      useEffect(()=>{
       Messagedisplay()
     },[notification,count,isAuthenticated])
@@ -180,18 +181,20 @@ const logoutuser = () => {
                         </ul>
                     </li> 
 
+                
                     <li style = {{position:"relative",bottom:'20%'}} className="nav-item dropdown">
                         <Link className="nav-link dropdown-toggle nav-drop display" to="/AboutRules" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div className="nav-item dropdown" style={{color:"#8d8ddf",position:"relative"}}>
-                        <div className="GeeksforGeeks">
-            
-            </div>
+      <Badge overlap="rectangular" badgeContent={count} 
+      color="primary">
+        <Notifications style = {{cursor:"pointer"}}/>
+      </Badge>
     </div>
                         </Link>
                         <ul style={{backgroundColor:"#3C2485",textAlign:"left",color:"white",padding:"2px"}} className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                <li style = {{color:"#717bff"}}>challenge notification</li>
                           {
-                            notification.map((items,index)=>{
+                            allnotification.map((items,index)=>{
                               return(
                                 <React.Fragment key = {index}>
                                 {
@@ -205,6 +208,7 @@ const logoutuser = () => {
 
                         </ul>
                     </li>
+
 
                     <>
                     </>

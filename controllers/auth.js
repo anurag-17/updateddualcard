@@ -72,7 +72,6 @@ exports.login = catchAsyncError(
 ) 
 
 // exports.notification = catchAsyncError(async (req, res, next) => {
-
 //   console.log(req.body)
 //   const {} =
 //     req.body;
@@ -88,7 +87,6 @@ exports.login = catchAsyncError(
 // });
 
 const notification = async(playeroneuserid, playertwouserid, playeronename, playertwoname,message,type)=>{
-  console.log(playeronename)
   let challenge = await Notifications.create({
     playeronename: playeronename,
     playertwoname: playertwoname,
@@ -103,17 +101,20 @@ const notification = async(playeroneuserid, playertwouserid, playeronename, play
 exports.getusernotification = 
 catchAsyncError(
   async(req, res,next) => {
-    let userdata = await Notifications.find({playertwouserid:req.body.id,seenBy:{$nin:req.body.arr}});
-    let userdata1 = await Notifications.find({type:"public",seenBy:{$nin:req.body.arr}});
+    let userdata = await Notifications.find({playertwouserid:req.body.id,seenBy:{$nin:req.body.arr},playeroneuserid:{$ne:req.body.id}});
+    let userdata1 = await Notifications.find({type:"public",seenBy:{$nin:req.body.arr},playeroneuserid:{$ne:req.body.id}});
+    let userdata2 = await Notifications.find({type:"winlose",seenBy:{$nin:req.body.arr}})
     
     let publicchallenge = await Notifications.find({playeroneuserid:{$ne:req.body.id},type:"public",seenBy:{$nin:req.body.arr}}).count()
     let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
+    let allnotifications = await Notifications.find({playertwouserid:req.body.id})
   
     let notification = {
-      notificationlist:userdata.concat(userdata1),
+      notificationlist:userdata.concat(userdata1,userdata2),
       notificationcount:notificationcount+publicchallenge,
+      allnotifications:allnotifications
     }
-    //console.log(notification.notificationlist);
+    // console.log(notification.notificationlist);
     return res.status(200).json(notification);
   }
 )
@@ -135,7 +136,17 @@ catchAsyncError(
           }, isRead:1}
         )
     
-   
+   let userdata2 = await Notifications.updateMany(
+      {$or:[
+        {playertwouserid:req.body.id},
+        {playeroneuserid:req.body.id},  
+        {type:'winlose'}
+        ]
+      },
+          {$push:{
+            seenBy:req.body.id
+          }, isRead:1}
+        )
     let notificationcount = await Notifications.find({playertwouserid:req.body.id,isRead:0}).count();
     let notification = {
       notificationlist:userdata,
@@ -399,6 +410,8 @@ exports.setwinner=catchAsyncError(
 
 exports.setwinlose=catchAsyncError(
   async(req,res,next)=>{
+    const result = req.body.result;
+    // console.log(result)
     const losestatus = await challenge.findByIdAndUpdate(req.body.id,{
     winner:req.body.winner,
     loser:req.body.loser,
@@ -406,6 +419,33 @@ exports.setwinlose=catchAsyncError(
     createdAt:req.body.createdAt,
     expiresAt:req.body.expiresAt
   })
+
+  const data  = await challenge.findById(req.body.id)
+
+      notification(req.body.winner,req.body.loser,req.body.winnername,req.body.losername,`${req.body.winnername} won ${req.body.losername} lose`,"winlose")
+    
+
+
+    return res.status(200).json(losestatus)
+  }
+)
+
+exports.setmanualreview=catchAsyncError(
+  async(req,res,next)=>{
+    const result = req.body.result;
+    // console.log(result)
+    const losestatus = await challenge.findByIdAndUpdate(req.body.id,{
+    winner:req.body.winner,
+    loser:req.body.loser,
+    result:req.body.result,
+    createdAt:req.body.createdAt,
+    expiresAt:req.body.expiresAt
+  })
+
+
+    if(result==="Manual Review"){
+      notification(req.body.winner,req.body.loser,req.body.winnername,req.body.losername,`Result Will Be Decided By Manual Review`,"Manual Review")
+    }
     return res.status(200).json(losestatus)
   }
 )
@@ -473,7 +513,7 @@ exports.losing = catchAsyncError(
     console.log(req.body.winid)
     console.log(req.body)
     let lose;
-    if (req.body.id.match(/^[0-9a-fA-F]{24}$/)) {
+    if (req.body.id.match(/^[0-9a-fA-F]{24}$/)){
       console.log("here")
      lose = await User.findByIdAndUpdate(req.body.id,
       {

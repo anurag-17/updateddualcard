@@ -15,7 +15,7 @@ export const PublicRecieve = () => {
   const navigate = useNavigate()
   const { image,loading,isImage} = useSelector((state) => state.image);
   const [challenge, setChallenge] = useState([])
-  const [playertwoname,setplayertwoname] = useState("")
+  const [playeroneid,setplayeroneid] = useState("")
   const [selectedimage,setselectedimage] = useState([]);
   const [show, setShow] = useState(false)
   const [userimagedata, setuserimagedata] = useState([])
@@ -43,7 +43,9 @@ export const PublicRecieve = () => {
       setLoader(false)
       setChallenge(res.data.filter((items, index) => {
         return items._id === id && items.Accept === "pending"
+        setplayeroneid(items.player_1_id)
       }))
+
     }
   }
 
@@ -72,6 +74,7 @@ export const PublicRecieve = () => {
           challengerid:id,
           Accept:true,
           playertwoid:storagedata._id,
+          playeroneid:playeroneid,
           decline:false,
           playertwo_url:checkedimage,
           name:storagedata.username,
