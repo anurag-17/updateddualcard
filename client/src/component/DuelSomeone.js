@@ -215,6 +215,7 @@ const DuelSomeone = () => {
       playeroneuserid:storagedata._id,
       playertwouserid:"",
       playeronename:storagedata.username,
+      playeroneavatar:storagedata.avatar,
       playertwoname:"",
       playeronelink: linkurl,
       gamechoice:gamechoice

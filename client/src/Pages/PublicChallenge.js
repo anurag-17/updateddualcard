@@ -38,6 +38,7 @@ getuserdata()
  <table className='table table-striped'>
 <thead>
 <tr  className='border-none' style = {{color:"white"}}>
+<th>#</th>
     <th>Username</th>
     <th>Twitch/Youtube</th>
     <th>Game of Choice</th>
@@ -52,14 +53,10 @@ getuserdata()
       console.log(items._id)
     return(
   <tr className="border-none" style = {{"cursor":"pointer",border:"none"}} onClick={()=>{navigate(`/publicRecieve/${items._id}`)}}>
-
+<td>
+<img style = {{width:"36px"}} src= {items.player_1[0].avatar}/>
+</td>
   <td>
-    {/* {userdata.map((items,index)=>{
-    console.log(items)
-    return(
-      <img src  = {items.avatar}/>
-    )
-  })} */}
   {items.player_1[0].name}</td>
   <td>{items.player_1[0].link}</td>
   <td>{items.player_1[0].gamechoice}</td>

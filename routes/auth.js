@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const{ register, login,getdata, getuserdata,sendchallange, getchallenge, getrecieved, acceptChallenge, challengeStatus, declineChallenge, getwinner, setwinner, countwinlose,updateimage,setwinlose, setexpire, addwinimage, addchallenge, addloseimage, getallchallenge, winning, losing, publicchallenge, populating, playertwoid, getusernotification, updatenotificationstatus, isAuthuser, dashboard, adminlogin}= require('../controllers/auth');
+const{ register,setmanualreview, login,getdata, getuserdata,sendchallange, getchallenge, getrecieved, acceptChallenge, challengeStatus, declineChallenge, getwinner, setwinner, countwinlose,updateimage,setwinlose, setexpire, addwinimage, addchallenge, addloseimage, getallchallenge, winning, losing, publicchallenge, populating, playertwoid, getusernotification, updatenotificationstatus, isAuthuser, dashboard, adminlogin}= require('../controllers/auth');
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/adminlogin").post(adminlogin)
@@ -20,6 +20,7 @@ router.route("/declinechallenge").put(declineChallenge)
 router.route("/winnerchallenge").post(getwinner)
 router.route("/winnerstatus").put(setwinner)
 router.route("/setwinlose").put(setwinlose)
+router.route("/setmanualreview").put(setmanualreview)
 router.route("/countwinlose").post(countwinlose)
 router.route("/updateimage").put(updateimage)
 router.route("/setexpire").put(setexpire)
