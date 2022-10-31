@@ -3,6 +3,7 @@ const Image = require("../models/Image");
 const ErrorResponse = require("../utlis/errorresponse.js");
 const emailValidator = require("deep-email-validator");
 const Challenge = require("../models/challenge");
+const jwt = require("jsonwebtoken");
 const catchAsyncError = require("../Errorhandlers/catchAsyncError")
 const ErrorHandler = require("../config/errorHandler");
 const challenge = require("../models/challenge");
@@ -149,13 +150,25 @@ catchAsyncError(
   async (req, res, next) => {
     const { token } = req.cookies;
     if (!token) {
-      return next(new ErrorResponse("please login to access this resource", 401));
-    }
-    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+      return next(new ErrorHandler("please login to access this resource",401))
+    } else{
+      const decodedData = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decodedData.id);
     next();
-  }
-  )
+    }
+  })
+
+  exports.dashboard = catchAsyncError(async (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ message: "please login to access this resource" })
+    }
+    const user = await User.findById(req.user.id);
+    res.status(200).json({
+      sucess: true,
+      user,
+    });
+  });
+
 
 exports.getdata = 
 catchAsyncError(
@@ -588,7 +601,7 @@ const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();
   //options for cookies
   const options = {
-    expire: new Date(Date.now + 24 * 60 * 60 * 1000),
+    expire: new Date(Date.now+ 24 * 60 * 60 * 1000),
     httpOnly: true,
   };
   res.status(statusCode).cookie("token",token,options).json({
