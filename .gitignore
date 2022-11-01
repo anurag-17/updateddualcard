@@ -11,8 +11,8 @@ node_modules/
 # testing
 /coverage
 
-
-
+#secret file
+config.env
 
 # misc
 
