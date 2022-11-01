@@ -7,7 +7,7 @@ import Home from './Pages/Home';
 import Header from "./component/Header"
 import Footer from "./component/Footer"
 import BuyDuelCard from "./Pages/BuyDuelCard"
-import DuelSomeone from './component/DuelSomeone';
+import DuelSomeone from './component/DuelSomeone'
 import Marketplace from "./Pages/Marketplace"
 import DuelReceived from "./component/DuelReceived"
 import DuelAccepted from "./component/DuelAccepted"
@@ -43,23 +43,19 @@ function App() {
 
   const dispatch = useDispatch();
   dispatch(loaduser());
-
   const getexpire = async () => {
-    await axios.put("/api/auth/setexpire", { date: Date.now() })
+    await axios.put("/api/auth/setexpire", { date: Date.now()})
   }
-
 
   useEffect(() => {
     getexpire()
-    // getrecieved()
+   // getrecieved()
   }, [])
 
   let location = useLocation();
 
-  return (
-
+  return(
     <>
-
       <div className="App">
         {location.pathname !== "/admin" && location.pathname !== "/usertable" && location.pathname !== "/challengetable" && location.pathname !== "/dispute" && location.pathname !== '/adminlogin' && <Header />}
 
@@ -97,9 +93,7 @@ function App() {
           <Route path="/usertable" element={<Table_user />} />
           <Route path='/dispute' element={<Dispute/>}/>
           <Route path='/adminlogin' element={<AdminLogin/>}/>
-          
           {/* <Route path = "/adminlogin" element={<AdminLogin/>}/> */}
-
           {/* <Route path = "/duelmarket" element = {<ChallengeMarket/>}/> */}
         </Routes>
         {location.pathname !== "/admin" && location.pathname !== "/usertable" && location.pathname !== "/challengetable" 
@@ -110,20 +104,14 @@ function App() {
   );
 }
 
-
 export function ProtectedRoute(props) {
-
   const userdata = localStorage.getItem("nftuser")
-
   if (userdata) {
     return props.children
   } else {
     return <Navigate to="/login" />
   }
-
 }
-
-
 
 export function PrivateRoute(props) {
   if (!localStorage.getItem("nftuser")) {
@@ -132,6 +120,5 @@ export function PrivateRoute(props) {
     return <Navigate to="/DuelSomeone" />
   }
 }
-
 
 export default App;

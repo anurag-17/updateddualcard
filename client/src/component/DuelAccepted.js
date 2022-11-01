@@ -8,7 +8,6 @@ import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
-
 export const DuelAccepted = () => {
   const navigate = useNavigate()
   const [challengedata, setchallengedata] = useState([]);
@@ -168,7 +167,7 @@ const handlewin=async(e)=>{
         modules={[Autoplay,Pagination,Navigation]}
         className="mySwiper"
       >
-
+        
 {items.player_1[0].images.map((items, index) => {
                                 return (
                                   <SwiperSlide key = {index}>

@@ -271,7 +271,6 @@ const logoutuser = () => {
         ))}
         </div>
     </div>
-
   )
 
 }
